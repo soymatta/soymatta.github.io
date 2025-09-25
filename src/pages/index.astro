@@ -1,0 +1,55 @@
+---
+import "../styles/global.css";
+import Projects from "../components/Projects.astro";
+import Studies from "../components/Studies.astro";
+import ToolsPills from "../components/ToolsPills.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Yassed Matta | Portfolio</title>
+  </head>
+  <body>
+    <section id="hero">
+      <h1>¡Hola, soy Yassed Matta!</h1>
+      <p>
+        Programador Web y Mobile, enfocando mis conocimientos a la programación
+        Fullstack
+      </p>
+    </section>
+    <section id="studies">
+      <h2>Estudios</h2>
+      <Studies
+        title="ingeniería de Sistemas"
+        place="Universidad Libre"
+        year="2020 - 2025"
+        description="Estudio profesional de ingeniería de sistema durante 6 semestres"
+      />
+    </section>
+    <section id="tools">
+      <h2>Lenguajes</h2>
+      <ToolsPills image="" description="propósito general" title="Python" />
+      <h2>Frameworks</h2>
+      <h2>Herramientas</h2>
+    </section>
+    <section id="projects">
+      <h2>Proyectos</h2>
+      <Projects
+        image=""
+        title="Proyecto 1"
+        description="Descripción del proyecto 1"
+        repo=""
+        demo=""
+        tool1="Python"
+        tool2="Django"
+        tool3="JavaScript"
+        tool4="React"
+      />
+    </section>
+    <section id="contact"><h2>Contacto</h2></section>
+  </body>
+</html>
