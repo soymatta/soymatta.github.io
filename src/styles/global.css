@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Varela&display=swap");
+
 @import "tailwindcss";
 
 :root {
@@ -13,4 +15,13 @@
 body {
   background-color: var(--dark-bg-color);
   color: var(--dark-primary-text-color);
+  font-family: "Istok Web", "Varela", sans-serif;
+}
+
+.font-istok-web {
+  font-family: "Istok Web", sans-serif;
+}
+
+.font-varela {
+  font-family: "Varela", sans-serif;
 }
