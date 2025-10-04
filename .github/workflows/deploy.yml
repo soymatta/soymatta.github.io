@@ -18,38 +18,36 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # ✅ 1. Checkout del código
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      # ✅ 2. Configura Node.js (NO instala pnpm todavía)
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'pnpm'   # cache para pnpm-lock.yaml
-
-      # ✅ 3. Instala pnpm antes de usarlo (ESTE PASO ES CLAVE)
+      # 🟢 Instala pnpm antes de usarlo
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9  # Usa la misma versión que tengas localmente (pnpm -v)
+          version: 9  # usa tu versión local de pnpm
 
-      # ✅ 4. Instala dependencias
+      # 🟢 Configura Node.js (después de pnpm)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      # 🟢 Instala dependencias con pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # ✅ 5. Compila el sitio
+      # 🟢 Compila el sitio Astro
       - name: Build
         run: pnpm run build
 
-      # ✅ 6. Sube los artefactos de build
+      # 🟢 Sube artefactos del build (dist/)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
-  # ✅ 7. Despliega a GitHub Pages
   deploy:
     needs: build
     runs-on: ubuntu-latest
