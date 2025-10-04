@@ -3,7 +3,7 @@ name: Deploy Astro site to GitHub Pages
 on:
   push:
     branches:
-      - main # o la rama que uses
+      - main  # o la rama que uses
 
 permissions:
   contents: read
@@ -27,13 +27,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "pnpm" # cache para pnpm-lock.yaml
+          cache: 'pnpm'   # cache para pnpm-lock.yaml
 
       # ✅ 3. Instala pnpm antes de usarlo (ESTE PASO ES CLAVE)
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9 # Usa la misma versión que tengas localmente (pnpm -v)
+          version: 9  # Usa la misma versión que tengas localmente (pnpm -v)
 
       # ✅ 4. Instala dependencias
       - name: Install dependencies
@@ -57,3 +57,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
