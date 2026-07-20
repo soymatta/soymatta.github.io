@@ -10,230 +10,656 @@ import Buttons from "../components/Buttons.astro";
 import Footer from "../components/Footer.astro";
 
 // Icons
-import PythonIcon from "../images/PythonIcon.svg";
-import CopyIcon from "../images/CopyIcon.svg?raw";
-import CVIcon from "../images/CVIcon.svg?raw";
-import GithubIcon from "../images/GithubIcon.svg?raw";
-import LinkedinIcon from "../images/LinkedinIcon.svg?raw";
-import MailIcon from "../images/MailIcon.svg?raw";
-import PhoneIcon from "../images/PhoneIcon.svg?raw";
-import LocationIcon from "../images/LocationIcon.svg?raw";
-import SendIcon from "../images/SendIcon.svg?raw";
-import BookIcon from "../images/BookIcon.svg?raw";
-import CodeIcon from "../images/CodeIcon.svg?raw";
+import CopyIcon from "../images/icon-copy.svg?raw";
+import CVIcon from "../images/icon-download.svg?raw";
+import GithubIcon from "../images/icon-github.svg?raw";
+import LinkedinIcon from "../images/icon-linkedin.svg?raw";
+import MailIcon from "../images/icon-mail.svg?raw";
+import PhoneIcon from "../images/icon-phone.svg?raw";
+import LocationIcon from "../images/icon-map-pin.svg?raw";
+import SendIcon from "../images/icon-send.svg?raw";
+import BookIcon from "../images/icon-book.svg?raw";
+import CodeIcon from "../images/icon-code.svg?raw";
+
+// Tool icons (devicon)
+import PythonIcon from "../images/icon-python.svg?raw";
+import JSIcon from "../images/icon-javascript.svg?raw";
+import JavaIcon from "../images/icon-java.svg?raw";
+import FlaskIcon from "../images/icon-flask.svg?raw";
+import DjangoIcon from "../images/icon-django.svg?raw";
+import ReactIcon from "../images/icon-react.svg?raw";
+import AngularIcon from "../images/icon-angular.svg?raw";
+import FlutterIcon from "../images/icon-flutter.svg?raw";
+import TailwindIcon from "../images/icon-tailwindcss.svg?raw";
+import MysqlIcon from "../images/icon-mysql.svg?raw";
+import FirebaseIcon from "../images/icon-firebase.svg?raw";
+import SupabaseIcon from "../images/icon-supabase.svg?raw";
+import GitIcon from "../images/icon-git.svg?raw";
+import PostmanIcon from "../images/icon-postman.svg?raw";
 
 // Images
 import MeCharacter from "../images/MeCharacter.png";
+
+const inputClass =
+  "bg-card border-2 border-accent rounded-xl px-4 py-3 text-fg font-varela text-base outline-none transition-colors duration-200 focus:border-accent focus:ring-2 focus:ring-accent/20 placeholder:text-muted";
 ---
 
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="/MeCharacter.png" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yassed Matta | Desarrollador Fullstack</title>
+    <meta
+      name="description"
+      content="Portfolio de Yassed Matta — Desarrollador Web y Mobile Fullstack. Python, JavaScript, TypeScript, React, Django, Node.js, Astro."
+    />
     <meta name="generator" content={Astro.generator} />
-    <title>Yassed Matta | Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:title" content="Yassed Matta | Desarrollador Fullstack" />
+    <meta
+      property="og:description"
+      content="Portfolio de Yassed Matta — Desarrollador Web y Mobile Fullstack"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://soymatta.github.io/" />
+    <meta
+      property="og:image"
+      content="https://soymatta.github.io/MeCharacter.png"
+    />
+    <link rel="canonical" href="https://soymatta.github.io/" />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Yassed Matta",
+      "jobTitle": "Desarrollador Fullstack",
+      "url": "https://soymatta.github.io/",
+      "email": "yassed883@gmail.com",
+      "sameAs": [
+        "https://github.com/soymatta",
+        "https://www.linkedin.com/in/mattayassed/"
+      ]
+    })} />
   </head>
   <body>
     <Navbar />
 
-    <!-- ========== HERO ========== -->
-    <section id="hero" class="flex flex-row items-center h-screen gap-12">
-      <div class="flex-1">
-        <h1>¡Hola, soy Yassed Matta!</h1>
-        <p class="text-lg" style="color: var(--text-tertiary);">
-          Programador Web y Mobile, enfocando mis conocimientos a la
-          programación Fullstack
-        </p>
-        <div class="flex flex-row gap-3 mt-6">
-          <Buttons
-            icon={GithubIcon}
-            text="Github"
-            href="https://github.com/soymatta"
-            target="_blank"
-            type="primary"
-          />
-          <Buttons
-            icon={LinkedinIcon}
-            text="Linkedin"
-            href="https://www.linkedin.com/in/mattayassed/"
-            target="_blank"
-            type="primary"
-          />
-        </div>
-        <div class="flex flex-row gap-3 mt-3">
-          <Buttons
-            icon={CVIcon}
-            text="Download CV"
-            href="/cv.pdf"
-            download
-            type="secondary"
-          />
-          <div id="email-group" class="relative inline-flex items-center">
-            <Buttons
-              id="email-btn"
-              icon={MailIcon}
-              text="yassed883@gmail.com"
-              type="secondary"
-            />
-            <Buttons
-              id="copy-btn"
-              icon={CopyIcon}
-              text="Click para copiar"
-              type="ternary"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="flex-shrink-0 rounded-full bg-white p-3 flex items-center justify-center">
-        <img class="w-52 h-52 rounded-full object-contain" src={MeCharacter.src} alt="Me character" />
-      </div>
-    </section>
-
-    <!-- ========== ESTUDIOS ========== -->
-    <section id="studies" class="mt-20">
-      <h2>Estudios</h2>
-      <Studies
-        title="Ingeniería de Sistemas"
-        place="Universidad Libre"
-        year="2020 - 2025"
-        description="Estudio profesional de ingeniería de sistemas durante 6 semestres"
-      />
-    </section>
-
-    <!-- ========== LENGUAJES / FRAMEWORKS / HERRAMIENTAS ========== -->
-    <section id="tools" class="mt-20">
-      <h2>Lenguajes</h2>
-      <ToolsPills
-        image={PythonIcon}
-        description="Propósito general"
-        title="Python"
-      />
-      <h2 class="section-title-sm">Frameworks</h2>
-      <h2 class="section-title-sm">Herramientas</h2>
-    </section>
-
-    <!-- ========== PROYECTOS ========== -->
-    <section id="projects" class="mt-20">
-      <h2>Proyectos</h2>
-      <Projects
-        title="Proyecto 1"
-        description="Descripción del proyecto 1"
-        repo="https://github.com/soymatta"
-        demo=""
-        tools={["Python", "Django", "JavaScript", "React"]}
-      />
-    </section>
-
-    <!-- ========== CONTACTO ========== -->
-    <section id="contact" class="mt-20">
-      <div class="flex flex-row gap-12">
-        <!-- Left: Info -->
-        <div class="flex-1">
-          <h2>Contacto</h2>
-          <p class="text-lg mt-4" style="color: var(--text-tertiary);">
-            ¿Quieres que haga parte de tu equipo? tienes alguna duda o propuesta sobre mi trabajo, puedes contactarme por el formulario o con estos datos:
+    <main class="px-[160px]">
+      <!-- ========== HERO ========== -->
+      <section id="hero" class="flex items-center justify-between min-h-screen">
+        <div class="flex-1 max-w-[600px]">
+          <h1 class="animate-fade-in-left" data-i18n="hero.title">¡Hola, soy Yassed Matta!</h1>
+          <p class="text-lg text-muted mt-4 animate-fade-in-left delay-1" data-i18n="hero.subtitle">
+            Programador Web y Mobile con conocimientos en desarrollo Fullstack.
+            Especializado en Python, JavaScript, frameworks modernos y bases de datos.
           </p>
-          <div class="flex flex-col gap-4 mt-6">
-            <div class="flex items-center gap-3">
-              <span set:html={MailIcon} class="flex-shrink-0 w-6 h-6" style="color: var(--text-secondary);" />
-              <span>yassed883@gmail.com</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <span set:html={PhoneIcon} class="flex-shrink-0 w-6 h-6" style="color: var(--text-secondary);" />
-              <span>+57 304 536 4492</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <span set:html={LocationIcon} class="flex-shrink-0 w-6 h-6" style="color: var(--text-secondary);" />
-              <span>Barranquilla / Colombia</span>
+          <div class="flex gap-3 mt-8 animate-fade-in-up delay-2">
+            <Buttons
+              icon={GithubIcon}
+              text="Github"
+              href="https://github.com/soymatta"
+              target="_blank"
+              type="primary"
+              textKey="hero.github"
+            />
+            <Buttons
+              icon={LinkedinIcon}
+              text="Linkedin"
+              href="https://www.linkedin.com/in/mattayassed/"
+              target="_blank"
+              type="primary"
+              textKey="hero.linkedin"
+            />
+          </div>
+          <div class="flex gap-3 mt-3 animate-fade-in-up delay-3">
+            <Buttons
+              id="cv-btn"
+              icon={CVIcon}
+              text="Descargar CV"
+              href="/cv.pdf"
+              download
+              type="secondary"
+              textKey="hero.cv"
+            />
+            <div
+              class="group relative inline-flex flex-col items-start gap-2"
+            >
+              <Buttons
+                id="email-btn"
+                icon={MailIcon}
+                text="yassed883@gmail.com"
+                type="secondary"
+              />
+              <div
+                class="opacity-0 -translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300"
+              >
+                <Buttons
+                  id="copy-btn"
+                  icon={CopyIcon}
+                  text="Click para copiar"
+                  type="ternary"
+                  textKey="hero.copy"
+                />
+              </div>
             </div>
           </div>
         </div>
-
-        <!-- Right: Form -->
-        <div class="flex-1">
-          <form id="contact-form" action="https://formspree.io/f/mqkrwzog" method="POST" class="flex flex-col gap-4">
-            <!-- Honeypot anti-spam -->
-            <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
-
-            <!-- Time check -->
-            <input type="hidden" id="form-start" name="_timestamp" value="" />
-
-            <input type="text" name="nombre" placeholder="Nombre" required class="form-input" />
-            <input type="email" name="email" placeholder="Email" required class="form-input" />
-            <input type="text" name="asunto" placeholder="Asunto" required class="form-input" />
-            <textarea name="mensaje" placeholder="Mensaje" rows="5" required class="form-input resize-none"></textarea>
-
-            <!-- Math captcha -->
-            <div class="flex flex-col gap-2">
-              <label class="text-sm" style="color: var(--text-tertiary);">¿Cuánto es <span id="math-a"></span> + <span id="math-b"></span>?</label>
-              <input type="number" name="_answer" id="math-answer" placeholder="Respuesta" required class="form-input" />
-            </div>
-
-            <Buttons icon={SendIcon} text="Enviar" type="primary" />
-          </form>
+        <div
+          class="shrink-0 rounded-full bg-white p-4 flex items-center justify-center animate-fade-in-right animate-float"
+          id="hero-circle"
+        >
+          <img
+            class="w-80 h-80 rounded-full object-contain"
+            src={MeCharacter.src}
+            alt="Yassed Matta"
+          />
         </div>
-      </div>
-    </section>
+      </section>
+
+      <!-- ========== ESTUDIOS ========== -->
+      <section id="studies" class="mt-24">
+        <h2 class="flex items-center gap-3 reveal">
+          <span class="w-10 h-10 shrink-0 icon-outline" set:html={BookIcon} />
+          <span data-i18n="studies.title">Estudios</span>
+        </h2>
+        <div class="mt-6 space-y-6">
+          <Studies
+            title="Especialización en Seguridad Informática"
+            place="Corporación Universitaria Americana"
+            year="2025 - Actualmente"
+            description="Formación avanzada en ciberseguridad que abarca ética y aspectos legales, fundamentos de ciberseguridad, técnicas de pentesting, criptografía y auditoría de sistemas. Enfocada en la protección de infraestructuras tecnológicas y la detección de vulnerabilidades."
+            titleKey="studies.s1.title"
+            placeKey="studies.s1.place"
+            yearKey="studies.s1.year"
+            descKey="studies.s1.desc"
+          />
+          <Studies
+            title="Ingeniería de Sistemas"
+            place="Universidad Libre de Barranquilla"
+            year="2020 - 2025"
+            description="Profesional en Ingeniería de Sistemas con formación en desarrollo de software, arquitectura de bases de datos, redes de computadoras, inteligencia artificial y gestión de proyectos. Capacitado para diseñar, desarrollar e implementar soluciones tecnológicas integrales."
+            titleKey="studies.s2.title"
+            placeKey="studies.s2.place"
+            yearKey="studies.s2.year"
+            descKey="studies.s2.desc"
+          />
+          <Studies
+            title="Bachiller Técnico en Electrónica"
+            place="Instituto Técnico Industrial Blas Torres de la Torre (ITIDA)"
+            year="2013 - 2020"
+            description="Formación técnica en electrónica con bases sólidas en circuitos, microcontroladores, sistemas embebidos y programación de bajo nivel. Fundamentos que fortalecen la comprensión del hardware en el desarrollo de software."
+            titleKey="studies.s3.title"
+            placeKey="studies.s3.place"
+            yearKey="studies.s3.year"
+            descKey="studies.s3.desc"
+          />
+        </div>
+      </section>
+
+      <!-- ========== HABILIDADES ========== -->
+      <section id="tools" class="mt-24">
+        <h2 class="reveal" data-i18n="tools.languages">Lenguajes</h2>
+        <div class="flex flex-wrap gap-4 mt-5">
+          <ToolsPills icon={PythonIcon} description="Propósito general" title="Python" descKey="tools.python_desc" />
+          <ToolsPills icon={JSIcon} description="Frontend / Backend" title="JavaScript" descKey="tools.js_desc" />
+          <ToolsPills icon={JavaIcon} description="Backend" title="Java" descKey="tools.java_desc" />
+        </div>
+
+        <h2 class="mt-14 reveal" data-i18n="tools.frameworks">Frameworks y Librerías</h2>
+        <div class="flex flex-wrap gap-4 mt-5">
+          <ToolsPills icon={FlaskIcon} description="Backend Python" title="Flask" descKey="tools.flask_desc" />
+          <ToolsPills icon={DjangoIcon} description="Backend Python" title="Django" descKey="tools.django_desc" />
+          <ToolsPills icon={ReactIcon} description="Frontend" title="React" descKey="tools.react_desc" />
+          <ToolsPills icon={AngularIcon} description="Frontend" title="Angular" descKey="tools.angular_desc" />
+          <ToolsPills icon={FlutterIcon} description="Mobile" title="Flutter" descKey="tools.flutter_desc" />
+          <ToolsPills icon={TailwindIcon} description="CSS Utility" title="Tailwind CSS" descKey="tools.tailwind_desc" />
+        </div>
+
+        <h2 class="mt-14 reveal" data-i18n="tools.databases">Bases de datos y Backend</h2>
+        <div class="flex flex-wrap gap-4 mt-5">
+          <ToolsPills icon={MysqlIcon} description="Base de datos relacional" title="MySQL" descKey="tools.mysql_desc" />
+          <ToolsPills icon={FirebaseIcon} description="Backend as a Service" title="Firebase" descKey="tools.firebase_desc" />
+          <ToolsPills icon={SupabaseIcon} description="Backend as a Service" title="Supabase" descKey="tools.supabase_desc" />
+        </div>
+
+        <h2 class="mt-14 reveal" data-i18n="tools.devtools">Herramientas</h2>
+        <div class="flex flex-wrap gap-4 mt-5">
+          <ToolsPills icon={GitIcon} description="Control de versiones" title="Git" descKey="tools.git_desc" />
+          <ToolsPills icon={PostmanIcon} description="API Testing" title="Postman" descKey="tools.postman_desc" />
+        </div>
+      </section>
+
+      <!-- ========== PROYECTOS ========== -->
+      <section id="projects" class="mt-24">
+        <h2 class="flex items-center gap-3 reveal">
+          <span class="w-10 h-10 shrink-0 icon-outline" set:html={CodeIcon} />
+          <span data-i18n="projects.title">Proyectos</span>
+        </h2>
+        <div class="mt-6 space-y-8">
+          <Projects
+            title="Aplicación Móvil de Reciclaje"
+            description="Aplicación móvil orientada a la sostenibilidad ambiental. Implementación del flujo de autenticación completa, sincronización de base de datos en la nube en tiempo real utilizando Firebase, y gestión de usuarios. Obtuvo el 1.er Puesto en Competencia de Desarrollo."
+            repo="https://github.com/soymatta"
+            demo="https://github.com/soymatta"
+            tools={["Flutter", "Firebase"]}
+            titleKey="projects.p1.title"
+            descKey="projects.p1.desc"
+            repoText="Código Repo"
+            demoText="Demo"
+            repoKey="projects.p1.repo"
+            demoKey="projects.p1.demo"
+          />
+          <Projects
+            title="Plataforma E-Shop"
+            description="Plataforma de comercio electrónico con arquitectura robusta utilizando Flask para la lógica de servidor, MySQL para la gestión relacional de datos y un sistema de autenticación de usuarios. Obtuvo el 2.º Puesto en Competencia de Desarrollo."
+            repo="https://github.com/soymatta"
+            demo="https://github.com/soymatta"
+            tools={["Python", "Flask", "MySQL"]}
+            titleKey="projects.p2.title"
+            descKey="projects.p2.desc"
+            repoText="Código Repo"
+            demoText="Demo"
+            repoKey="projects.p2.repo"
+            demoKey="projects.p2.demo"
+          />
+        </div>
+      </section>
+
+      <!-- ========== CONTACTO ========== -->
+      <section id="contact" class="mt-24 mb-12">
+        <h2 class="flex items-center gap-3 reveal">
+          <span class="w-10 h-10 shrink-0 icon-outline" set:html={MailIcon} />
+          <span data-i18n="contact.title">Contacto</span>
+        </h2>
+        <div class="flex gap-12 mt-8">
+          <!-- Left: Info -->
+          <div class="flex-1 flex flex-col justify-center">
+            <h3
+              class="font-bold text-3xl text-fg inline-block border-b-[3px] border-accent pb-1 self-start"
+              data-i18n="contact.heading"
+            >
+              ¡Contáctame!
+            </h3>
+            <p class="text-base mt-4 text-muted leading-relaxed" data-i18n="contact.desc">
+              Si deseas que forme parte de tu equipo, tienes alguna duda o
+              propuesta sobre mi trabajo, puedes contactarme por el formulario o
+              con estos datos:
+            </p>
+            <div class="flex flex-col gap-5 mt-8">
+              <div class="flex items-center gap-3">
+                <span set:html={MailIcon} class="shrink-0 w-6 h-6 text-accent icon-outline" />
+                <span>yassed883@gmail.com</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span
+                  set:html={PhoneIcon}
+                  class="shrink-0 w-6 h-6 text-accent icon-outline"></span>
+                <span>+57 304 536 4492</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span
+                  set:html={LocationIcon}
+                  class="shrink-0 w-6 h-6 text-accent icon-outline"></span>
+                <span>Barranquilla / Colombia</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Form -->
+          <div class="flex-1">
+            <form
+              id="contact-form"
+              action="https://formspree.io/f/mqkrwzog"
+              method="POST"
+              class="flex flex-col gap-5"
+            >
+              <!-- Honeypot anti-spam -->
+              <input
+                type="text"
+                name="_gotcha"
+                class="sr-only"
+                tabindex="-1"
+                autocomplete="off"
+              />
+
+              <!-- Time check -->
+              <input type="hidden" id="form-start" name="_timestamp" value="" />
+
+              <div class="flex flex-col gap-1.5">
+                <label class="font-istok text-sm font-bold text-fg uppercase tracking-wide" data-i18n="contact.name">Nombre</label>
+                <input
+                  type="text"
+                  name="nombre"
+                  data-placeholder="contact.name_ph"
+                  placeholder="Escribe tu nombre completo"
+                  required
+                  class={inputClass}
+                />
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label class="font-istok text-sm font-bold text-fg uppercase tracking-wide">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="tu@email.com"
+                  required
+                  class={inputClass}
+                />
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label class="font-istok text-sm font-bold text-fg uppercase tracking-wide" data-i18n="contact.subject">Asunto</label>
+                <input
+                  type="text"
+                  name="asunto"
+                  data-placeholder="contact.subject_ph"
+                  placeholder="¿En qué puedo ayudarte?"
+                  required
+                  class={inputClass}
+                />
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label class="font-istok text-sm font-bold text-fg uppercase tracking-wide" data-i18n="contact.message">Mensaje</label>
+                <textarea
+                  name="mensaje"
+                  data-placeholder="contact.message_ph"
+                  placeholder="Escribe tu mensaje aquí..."
+                  rows="5"
+                  required
+                  class={`${inputClass} resize-none`}></textarea>
+              </div>
+
+              <!-- Math captcha -->
+              <div class="flex flex-col gap-2">
+                <label class="font-istok text-sm font-bold text-fg uppercase tracking-wide">
+                  <span data-i18n="contact.captcha">¿Cuánto es</span> <span id="math-a"></span> + <span id="math-b"></span>?
+                </label>
+                <input
+                  type="number"
+                  name="_answer"
+                  id="math-answer"
+                  data-placeholder="contact.answer_ph"
+                  placeholder="Respuesta"
+                  required
+                  class={inputClass}
+                />
+              </div>
+
+              <div class="flex justify-start mt-1">
+                <Buttons icon={SendIcon} text="Enviar" type="secondary" id="send-btn" textKey="contact.send" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <Footer />
   </body>
 </html>
 
-<style>
-  .form-input {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 0.75rem;
-    padding: 0.75rem 1rem;
-    color: var(--text-primary);
-    font-family: "Varela", sans-serif;
-    font-size: 1rem;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .form-input:focus {
-    border-color: var(--text-secondary);
-  }
-  .form-input::placeholder {
-    color: var(--text-tertiary);
-  }
-  .hidden {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-  }
-</style>
-
 <script>
+  // ===== TRANSLATIONS =====
+  const translations: Record<string, Record<string, string>> = {
+    es: {
+      // Navbar
+      "nav.about": "Sobre mi",
+      "nav.education": "Educación",
+      "nav.tools": "Herramientas",
+      "nav.projects": "Proyectos",
+      "nav.contact": "Contacto",
+      // Hero
+      "hero.title": "¡Hola, soy Yassed Matta!",
+      "hero.subtitle": "Programador Web y Mobile con conocimientos en desarrollo Fullstack. Especializado en Python, JavaScript, frameworks modernos y bases de datos.",
+      "hero.github": "Github",
+      "hero.linkedin": "Linkedin",
+      "hero.cv": "Descargar CV",
+      "hero.copy": "Click para copiar",
+      "hero.copied": "¡Copiado!",
+      // Studies
+      "studies.title": "Estudios",
+      "studies.s1.title": "Especialización en Seguridad Informática",
+      "studies.s1.place": "Corporación Universitaria Americana",
+      "studies.s1.year": "2025 - Actualmente",
+      "studies.s1.desc": "Formación avanzada en ciberseguridad que abarca ética y aspectos legales, fundamentos de ciberseguridad, técnicas de pentesting, criptografía y auditoría de sistemas. Enfocada en la protección de infraestructuras tecnológicas y la detección de vulnerabilidades.",
+      "studies.s2.title": "Ingeniería de Sistemas",
+      "studies.s2.place": "Universidad Libre de Barranquilla",
+      "studies.s2.year": "2020 - 2025",
+      "studies.s2.desc": "Profesional en Ingeniería de Sistemas con formación en desarrollo de software, arquitectura de bases de datos, redes de computadoras, inteligencia artificial y gestión de proyectos. Capacitado para diseñar, desarrollar e implementar soluciones tecnológicas integrales.",
+      "studies.s3.title": "Bachiller Técnico en Electrónica",
+      "studies.s3.place": "Instituto Técnico Industrial Blas Torres de la Torre (ITIDA)",
+      "studies.s3.year": "2013 - 2020",
+      "studies.s3.desc": "Formación técnica en electrónica con bases sólidas en circuitos, microcontroladores, sistemas embebidos y programación de bajo nivel. Fundamentos que fortalecen la comprensión del hardware en el desarrollo de software.",
+      // Tools
+      "tools.languages": "Lenguajes",
+      "tools.frameworks": "Frameworks y Librerías",
+      "tools.databases": "Bases de datos y Backend",
+      "tools.devtools": "Herramientas",
+      "tools.python_desc": "Propósito general",
+      "tools.js_desc": "Frontend / Backend",
+      "tools.java_desc": "Backend",
+      "tools.flask_desc": "Backend Python",
+      "tools.django_desc": "Backend Python",
+      "tools.react_desc": "Frontend",
+      "tools.angular_desc": "Frontend",
+      "tools.flutter_desc": "Mobile",
+      "tools.tailwind_desc": "CSS Utility",
+      "tools.mysql_desc": "Base de datos relacional",
+      "tools.firebase_desc": "Backend as a Service",
+      "tools.supabase_desc": "Backend as a Service",
+      "tools.git_desc": "Control de versiones",
+      "tools.postman_desc": "API Testing",
+      // Projects
+      "projects.title": "Proyectos",
+      "projects.p1.title": "Aplicación Móvil de Reciclaje",
+      "projects.p1.desc": "Aplicación móvil orientada a la sostenibilidad ambiental. Implementación del flujo de autenticación completa, sincronización de base de datos en la nube en tiempo real utilizando Firebase, y gestión de usuarios. Obtuvo el 1.er Puesto en Competencia de Desarrollo.",
+      "projects.p1.repo": "Código Repo",
+      "projects.p1.demo": "Demo",
+      "projects.p2.title": "Plataforma E-Shop",
+      "projects.p2.desc": "Plataforma de comercio electrónico con arquitectura robusta utilizando Flask para la lógica de servidor, MySQL para la gestión relacional de datos y un sistema de autenticación de usuarios. Obtuvo el 2.º Puesto en Competencia de Desarrollo.",
+      "projects.p2.repo": "Código Repo",
+      "projects.p2.demo": "Demo",
+      // Contact
+      "contact.title": "Contacto",
+      "contact.heading": "¡Contáctame!",
+      "contact.desc": "Si deseas que forme parte de tu equipo, tienes alguna duda o propuesta sobre mi trabajo, puedes contactarme por el formulario o con estos datos:",
+      "contact.name": "Nombre",
+      "contact.name_ph": "Escribe tu nombre completo",
+      "contact.subject": "Asunto",
+      "contact.subject_ph": "¿En qué puedo ayudarte?",
+      "contact.message": "Mensaje",
+      "contact.message_ph": "Escribe tu mensaje aquí...",
+      "contact.captcha": "¿Cuánto es",
+      "contact.answer_ph": "Respuesta",
+      "contact.send": "Enviar",
+      "contact.wait": "Por favor espera un momento antes de enviar.",
+      "contact.wrong": "Respuesta matemática incorrecta.",
+      // Footer
+      "footer.created": "Creado por",
+    },
+    en: {
+      // Navbar
+      "nav.about": "About me",
+      "nav.education": "Education",
+      "nav.tools": "Skills",
+      "nav.projects": "Projects",
+      "nav.contact": "Contact",
+      // Hero
+      "hero.title": "Hi, I'm Yassed Matta!",
+      "hero.subtitle": "Web and Mobile Developer with Fullstack development skills. Specialized in Python, JavaScript, modern frameworks and databases.",
+      "hero.github": "Github",
+      "hero.linkedin": "Linkedin",
+      "hero.cv": "Download CV",
+      "hero.copy": "Click to copy",
+      "hero.copied": "Copied!",
+      // Studies
+      "studies.title": "Education",
+      "studies.s1.title": "Specialization in Information Security",
+      "studies.s1.place": "Corporación Universitaria Americana",
+      "studies.s1.year": "2025 - Present",
+      "studies.s1.desc": "Advanced training in cybersecurity covering ethics and legal aspects, cybersecurity fundamentals, penetration testing techniques, cryptography and systems auditing. Focused on protecting technological infrastructure and vulnerability detection.",
+      "studies.s2.title": "Systems Engineering",
+      "studies.s2.place": "Universidad Libre de Barranquilla",
+      "studies.s2.year": "2020 - 2025",
+      "studies.s2.desc": "Systems Engineering professional with training in software development, database architecture, computer networks, artificial intelligence and project management. Capable of designing, developing and implementing comprehensive technological solutions.",
+      "studies.s3.title": "Technical High School in Electronics",
+      "studies.s3.place": "Instituto Técnico Industrial Blas Torres de la Torre (ITIDA)",
+      "studies.s3.year": "2013 - 2020",
+      "studies.s3.desc": "Technical training in electronics with solid foundations in circuits, microcontrollers, embedded systems and low-level programming. Fundamentals that strengthen hardware understanding in software development.",
+      // Tools
+      "tools.languages": "Languages",
+      "tools.frameworks": "Frameworks & Libraries",
+      "tools.databases": "Databases & Backend",
+      "tools.devtools": "Dev Tools",
+      "tools.python_desc": "General Purpose",
+      "tools.js_desc": "Frontend / Backend",
+      "tools.java_desc": "Backend",
+      "tools.flask_desc": "Python Backend",
+      "tools.django_desc": "Python Backend",
+      "tools.react_desc": "Frontend",
+      "tools.angular_desc": "Frontend",
+      "tools.flutter_desc": "Mobile",
+      "tools.tailwind_desc": "CSS Utility",
+      "tools.mysql_desc": "Relational Database",
+      "tools.firebase_desc": "Backend as a Service",
+      "tools.supabase_desc": "Backend as a Service",
+      "tools.git_desc": "Version Control",
+      "tools.postman_desc": "API Testing",
+      // Projects
+      "projects.title": "Projects",
+      "projects.p1.title": "Mobile Recycling App",
+      "projects.p1.desc": "Mobile app focused on environmental sustainability. Implementation of complete authentication flow, real-time cloud database synchronization using Firebase, and user management. Won 1st Place in Development Competition.",
+      "projects.p1.repo": "Source Code",
+      "projects.p1.demo": "Demo",
+      "projects.p2.title": "E-Shop Platform",
+      "projects.p2.desc": "E-commerce platform with robust architecture using Flask for server logic, MySQL for relational data management and a user authentication system. Won 2nd Place in Development Competition.",
+      "projects.p2.repo": "Source Code",
+      "projects.p2.demo": "Demo",
+      // Contact
+      "contact.title": "Contact",
+      "contact.heading": "Get in Touch!",
+      "contact.desc": "If you'd like me to be part of your team, have any questions or proposals about my work, you can reach me through the form or with this info:",
+      "contact.name": "Name",
+      "contact.name_ph": "Enter your full name",
+      "contact.subject": "Subject",
+      "contact.subject_ph": "How can I help you?",
+      "contact.message": "Message",
+      "contact.message_ph": "Write your message here...",
+      "contact.captcha": "What is",
+      "contact.answer_ph": "Answer",
+      "contact.send": "Send",
+      "contact.wait": "Please wait a moment before submitting.",
+      "contact.wrong": "Incorrect math answer.",
+      // Footer
+      "footer.created": "Created by",
+    },
+  };
+
+  // ===== THEME =====
+  function initTheme() {
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("theme-toggle");
+    const iconSun = document.getElementById("icon-sun");
+    const iconMoon = document.getElementById("icon-moon");
+    const heroCircle = document.getElementById("hero-circle");
+
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    if (savedTheme === "light") {
+      root.classList.add("light");
+      iconSun?.classList.add("hidden");
+      iconMoon?.classList.remove("hidden");
+      if (heroCircle) {
+        heroCircle.classList.remove("bg-white");
+        heroCircle.classList.add("bg-black");
+      }
+    }
+
+    themeBtn?.addEventListener("click", () => {
+      const isCurrentlyLight = root.classList.contains("light");
+
+      // Rotate animation on the button
+      const btn = themeBtn;
+      btn.style.transform = "rotate(360deg)";
+      setTimeout(() => { btn.style.transform = ""; }, 300);
+
+      root.classList.toggle("light");
+      const isLight = root.classList.contains("light");
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+      iconSun?.classList.toggle("hidden", isLight);
+      iconMoon?.classList.toggle("hidden", !isLight);
+
+      // Toggle hero circle bg: black in light, white in dark
+      if (heroCircle) {
+        if (isLight) {
+          heroCircle.classList.remove("bg-white");
+          heroCircle.classList.add("bg-black");
+        } else {
+          heroCircle.classList.remove("bg-black");
+          heroCircle.classList.add("bg-white");
+        }
+      }
+    });
+  }
+
+  // ===== LANGUAGE =====
+  function applyLang(lang: string) {
+    const t = translations[lang] || translations.es;
+    document.documentElement.lang = lang;
+
+    // Translate all data-i18n elements
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      if (key && t[key]) {
+        el.textContent = t[key];
+      }
+    });
+
+    // Translate placeholders
+    document.querySelectorAll("[data-placeholder]").forEach((el) => {
+      const key = el.getAttribute("data-placeholder");
+      if (key && t[key]) {
+        (el as HTMLInputElement).placeholder = t[key];
+      }
+    });
+  }
+
+  function initLang() {
+    const langBtn = document.getElementById("lang-toggle");
+    const flagEs = document.getElementById("flag-es");
+    const flagUs = document.getElementById("flag-us");
+
+    const savedLang = localStorage.getItem("lang") || "es";
+    if (savedLang === "en") {
+      flagEs?.classList.add("hidden");
+      flagUs?.classList.remove("hidden");
+    }
+    applyLang(savedLang);
+
+    langBtn?.addEventListener("click", () => {
+      const isEsVisible = !flagEs?.classList.contains("hidden");
+      const newLang = isEsVisible ? "en" : "es";
+      flagEs?.classList.toggle("hidden", !isEsVisible);
+      flagUs?.classList.toggle("hidden", isEsVisible);
+      localStorage.setItem("lang", newLang);
+      applyLang(newLang);
+    });
+  }
+
+  // ===== COPY EMAIL =====
   function initCopyEmail() {
-    const group = document.getElementById("email-group");
     const copyBtn = document.getElementById("copy-btn");
-    const emailBtn = document.getElementById("email-btn");
-    if (!group || !copyBtn || !emailBtn) return;
-
-    copyBtn.style.display = "none";
-
-    emailBtn.addEventListener("mouseenter", () => {
-      copyBtn.style.display = "inline-flex";
-    });
-
-    group.addEventListener("mouseleave", () => {
-      copyBtn.style.display = "none";
-      const textSpan = copyBtn.querySelector("span:last-child");
-      if (textSpan) textSpan.textContent = "Click para copiar";
-    });
-
-    copyBtn.addEventListener("click", () => {
+    copyBtn?.addEventListener("click", () => {
       navigator.clipboard.writeText("yassed883@gmail.com");
       const textSpan = copyBtn.querySelector("span:last-child");
-      if (textSpan) textSpan.textContent = "Copiado!";
+      const lang = localStorage.getItem("lang") || "es";
+      if (textSpan) textSpan.textContent = translations[lang]?.["hero.copied"] || "¡Copiado!";
       setTimeout(() => {
-        if (textSpan) textSpan.textContent = "Click para copiar";
+        if (textSpan) textSpan.textContent = translations[lang]?.["hero.copy"] || "Click para copiar";
       }, 2000);
     });
   }
 
+  // ===== CONTACT FORM =====
   function initContactForm() {
     const form = document.getElementById("contact-form") as HTMLFormElement;
     const mathA = document.getElementById("math-a");
@@ -242,7 +668,6 @@ import MeCharacter from "../images/MeCharacter.png";
 
     if (!form) return;
 
-    // Generate math captcha
     const a = Math.floor(Math.random() * 20) + 1;
     const b = Math.floor(Math.random() * 20) + 1;
     if (mathA) mathA.textContent = String(a);
@@ -250,28 +675,47 @@ import MeCharacter from "../images/MeCharacter.png";
     if (startTime) startTime.value = String(Date.now());
 
     form.addEventListener("submit", (e) => {
-      // Time check: must wait at least 3 seconds
       const elapsed = Date.now() - Number(startTime.value);
+      const lang = localStorage.getItem("lang") || "es";
       if (elapsed < 3000) {
         e.preventDefault();
-        alert("Por favor espera un momento antes de enviar.");
+        alert(translations[lang]?.["contact.wait"] || "Por favor espera un momento antes de enviar.");
         return;
       }
 
-      // Math check
       const answer = document.getElementById("math-answer") as HTMLInputElement;
       if (Number(answer?.value) !== a + b) {
         e.preventDefault();
-        alert("Respuesta matemática incorrecta.");
-        return;
+        alert(translations[lang]?.["contact.wrong"] || "Respuesta matemática incorrecta.");
       }
     });
   }
 
-  initCopyEmail();
-  initContactForm();
-  document.addEventListener("astro:after-swap", () => {
+  // ===== SCROLL REVEAL =====
+  function initReveal() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  }
+
+  // ===== INIT ALL =====
+  function initAll() {
+    initTheme();
+    initLang();
     initCopyEmail();
     initContactForm();
-  });
+    initReveal();
+  }
+
+  initAll();
+  document.addEventListener("astro:after-swap", initAll);
 </script>

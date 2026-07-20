@@ -1,107 +1,45 @@
 ---
-import SunIcon from "../images/SunIcon.svg?raw";
-import MoonIcon from "../images/MoonIcon.svg?raw";
+import SunIcon from "../images/icon-sun-light.svg?raw";
+import MoonIcon from "../images/icon-half-moon.svg?raw";
 import FlagUS from "../images/FlagUS.svg?raw";
 import FlagES from "../images/FlagES.svg?raw";
 ---
 
-<nav id="navbar" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 rounded-full border px-6 py-2 backdrop-blur-md" style="border-color: var(--border-color); background: var(--card-bg);">
-  <a href="#hero" class="nav-link">Sobre mi</a>
-  <a href="#studies" class="nav-link">Educacion</a>
-  <a href="#tools" class="nav-link">Herramientas</a>
-  <a href="#projects" class="nav-link">Proyectos</a>
-  <a href="#contact" class="nav-link">Contacto</a>
+<nav
+  id="navbar"
+  class="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-1 rounded-full border border-line bg-card/80 px-5 py-2 backdrop-blur-md"
+>
+  <a href="#hero" class="nav-link" data-i18n="nav.about">Sobre mi</a>
+  <a href="#studies" class="nav-link" data-i18n="nav.education">Educación</a>
+  <a href="#tools" class="nav-link" data-i18n="nav.tools">Herramientas</a>
+  <a href="#projects" class="nav-link" data-i18n="nav.projects">Proyectos</a>
+  <a href="#contact" class="nav-link" data-i18n="nav.contact">Contacto</a>
 
-  <span class="w-px h-5 mx-1" style="background: var(--border-color);"></span>
+  <span class="w-px h-5 mx-1.5 bg-line"></span>
 
-  <button id="theme-toggle" class="nav-icon-btn" aria-label="Cambiar tema">
-    <span id="icon-sun" set:html={SunIcon} />
-    <span id="icon-moon" style="display: none;" set:html={MoonIcon} />
+  <button
+    id="theme-toggle"
+    class="flex items-center justify-center w-8 h-8 rounded-full border-none bg-transparent text-fg cursor-pointer transition-colors duration-200 hover:bg-fg/10 p-0"
+    aria-label="Cambiar tema"
+  >
+    <span id="icon-sun" class="icon-outline w-[18px] h-[18px] transition-transform duration-300" set:html={SunIcon} />
+    <span id="icon-moon" class="hidden icon-outline w-[18px] h-[18px] transition-transform duration-300" set:html={MoonIcon} />
   </button>
 
-  <button id="lang-toggle" class="nav-icon-btn" aria-label="Cambiar idioma">
+  <button
+    id="lang-toggle"
+    class="flex items-center justify-center w-8 h-8 rounded-full border-none bg-transparent text-fg cursor-pointer transition-colors duration-200 hover:bg-fg/10 p-0"
+    aria-label="Cambiar idioma"
+  >
     <span id="flag-es" set:html={FlagES} />
-    <span id="flag-us" style="display: none;" set:html={FlagUS} />
+    <span id="flag-us" class="hidden" set:html={FlagUS} />
   </button>
 </nav>
 
 <style>
+  @reference "../styles/global.css";
+
   .nav-link {
-    font-family: "Istok Web", sans-serif;
-    font-size: 0.85rem;
-    color: var(--text-primary);
-    text-decoration: none;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-    transition: background 0.2s;
-  }
-  .nav-link:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
-  .nav-icon-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 9999px;
-    border: none;
-    background: transparent;
-    color: var(--text-primary);
-    cursor: pointer;
-    transition: background 0.2s;
-    padding: 0;
-  }
-  .nav-icon-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
-  .nav-icon-btn :global(svg) {
-    width: 18px;
-    height: 18px;
+    @apply font-istok text-sm text-fg no-underline px-3 py-1 rounded-full transition-colors duration-200 hover:bg-fg/10;
   }
 </style>
-
-<script>
-  function initNavbar() {
-    const root = document.documentElement;
-    const themeBtn = document.getElementById("theme-toggle");
-    const iconSun = document.getElementById("icon-sun");
-    const iconMoon = document.getElementById("icon-moon");
-    const langBtn = document.getElementById("lang-toggle");
-    const flagEs = document.getElementById("flag-es");
-    const flagUs = document.getElementById("flag-us");
-
-    // Theme toggle
-    const savedTheme = localStorage.getItem("theme") || "dark";
-    if (savedTheme === "light") {
-      root.classList.add("light");
-      if (iconSun) iconSun.style.display = "none";
-      if (iconMoon) iconMoon.style.display = "";
-    }
-
-    themeBtn?.addEventListener("click", () => {
-      root.classList.toggle("light");
-      const isLight = root.classList.contains("light");
-      localStorage.setItem("theme", isLight ? "light" : "dark");
-      if (iconSun) iconSun.style.display = isLight ? "none" : "";
-      if (iconMoon) iconMoon.style.display = isLight ? "" : "none";
-    });
-
-    // Language toggle
-    const savedLang = localStorage.getItem("lang") || "es";
-    if (savedLang === "en") {
-      if (flagEs) flagEs.style.display = "none";
-      if (flagUs) flagUs.style.display = "";
-    }
-
-    langBtn?.addEventListener("click", () => {
-      const isEsVisible = flagEs?.style.display !== "none";
-      if (flagEs) flagEs.style.display = isEsVisible ? "none" : "";
-      if (flagUs) flagUs.style.display = isEsVisible ? "" : "none";
-      localStorage.setItem("lang", isEsVisible ? "en" : "es");
-    });
-  }
-
-  initNavbar();
-  document.addEventListener("astro:after-swap", initNavbar);
-</script>

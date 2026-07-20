@@ -1,14 +1,18 @@
 ---
-const { image, title, description } = Astro.props;
-//
+const { icon, title, description, titleKey, descKey, static: staticPill = false } = Astro.props;
 ---
 
-<div
-  class="flex flex-row rounded-4xl border border-white bg-[#272729] max-w-[200px] h-[50px] items-center p-3 py-7 gap-2"
->
-  <img src={image.src} alt="Tool image" width="30px" height="30px" />
-  <div>
-    <h3 class="font-bold">{title}</h3>
-    <p class="text-[#8a8a8a] font-varela">{description}</p>
+<div class:list={[
+  "flex items-center gap-3 rounded-full border-2 border-line bg-card px-5 h-[56px] w-[240px] transition-colors duration-200",
+  !staticPill && "hover:bg-card-hover hover:border-accent/50 cursor-pointer",
+]}>
+  {
+    icon && (
+      <span class="shrink-0 w-8 h-8 icon-outline" set:html={icon} />
+    )
+  }
+  <div class="min-w-0">
+    <h3 class="font-bold text-sm leading-tight">{title}</h3>
+    {description && <p class="text-muted text-xs leading-tight" data-i18n={descKey}>{description}</p>}
   </div>
 </div>

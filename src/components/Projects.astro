@@ -1,27 +1,99 @@
 ---
 import Buttons from "./Buttons.astro";
-import GithubIcon from "../images/GithubIcon.svg?raw";
-import LinkIcon from "../images/LinkIcon.svg?raw";
+import GithubIcon from "../images/icon-github.svg?raw";
+import LinkIcon from "../images/icon-link.svg?raw";
 import PagePreviewTemplate from "../images/PagePreviewTemplate.png";
 
-const { title, description, repo, demo, tools = [] } = Astro.props;
+import PythonIcon from "../images/icon-python.svg?raw";
+import DjangoIcon from "../images/icon-django.svg?raw";
+import JSIcon from "../images/icon-javascript.svg?raw";
+import ReactIcon from "../images/icon-react.svg?raw";
+import JavaIcon from "../images/icon-java.svg?raw";
+import FlaskIcon from "../images/icon-flask.svg?raw";
+import AngularIcon from "../images/icon-angular.svg?raw";
+import FlutterIcon from "../images/icon-flutter.svg?raw";
+import TailwindIcon from "../images/icon-tailwindcss.svg?raw";
+import MysqlIcon from "../images/icon-mysql.svg?raw";
+import FirebaseIcon from "../images/icon-firebase.svg?raw";
+import SupabaseIcon from "../images/icon-supabase.svg?raw";
+import GitIcon from "../images/icon-git.svg?raw";
+import PostmanIcon from "../images/icon-postman.svg?raw";
+
+const toolIcons: Record<string, string> = {
+  Python: PythonIcon,
+  JavaScript: JSIcon,
+  Java: JavaIcon,
+  Flask: FlaskIcon,
+  Django: DjangoIcon,
+  React: ReactIcon,
+  Angular: AngularIcon,
+  Flutter: FlutterIcon,
+  "Tailwind CSS": TailwindIcon,
+  MySQL: MysqlIcon,
+  Firebase: FirebaseIcon,
+  Supabase: SupabaseIcon,
+  Git: GitIcon,
+  Postman: PostmanIcon,
+};
+
+const { title, description, repo, demo, tools = [], titleKey, descKey, repoText, demoText, repoKey, demoKey } = Astro.props;
 ---
 
-<div class="flex flex-row gap-8 items-start">
-  <div class="flex-1 rounded-xl overflow-hidden" style="background: var(--card-bg);">
-    <img class="w-full h-auto" src={PagePreviewTemplate.src} alt={title} />
+<article class="flex gap-10 items-start py-8">
+  <div class="rounded-2xl overflow-hidden bg-card max-w-[400px] shrink-0 border border-line">
+    <img
+      class="w-full h-auto"
+      src={PagePreviewTemplate.src}
+      alt={title}
+      loading="lazy"
+    />
   </div>
-  <div class="flex-1">
-    <h3 class="text-3xl text-[var(--text-secondary)]">{title}</h3>
-    <p class="text-xl mt-2" style="color: var(--text-tertiary);">{description}</p>
-    <div class="flex flex-wrap gap-2 mt-3">
-      {tools.map((tool: string) => (
-        <span class="px-3 py-1 rounded-full text-sm" style="background: var(--card-bg); border: 1px solid var(--border-color);">{tool}</span>
-      ))}
+  <div class="flex-1 min-w-0">
+    <h3 class="text-2xl text-accent font-bold" data-i18n={titleKey}>
+      {title}
+    </h3>
+    <p class="text-lg mt-3 text-muted" data-i18n={descKey}>
+      {description}
+    </p>
+
+    <div class="flex gap-3 mt-5">
+      {
+        repo && (
+          <Buttons
+            icon={GithubIcon}
+            text={repoText || "Codigo Repo"}
+            href={repo}
+            target="_blank"
+            type="secondary"
+            textKey={repoKey}
+          />
+        )
+      }
+
+      {
+        demo && (
+          <Buttons
+            icon={LinkIcon}
+            text={demoText || "Demo"}
+            href={demo}
+            target="_blank"
+            type="secondary"
+            textKey={demoKey}
+          />
+        )
+      }
     </div>
-    <div class="flex flex-row gap-3 mt-4">
-      {repo && <Buttons icon={GithubIcon} text="Codigo Repo" href={repo} target="_blank" type="secondary" />}
-      {demo && <Buttons icon={LinkIcon} text="Demo" href={demo} target="_blank" type="primary" />}
+    <div class="flex flex-wrap gap-2 mt-4">
+      {
+        tools.map((tool: string) => (
+          <Buttons
+            icon={toolIcons[tool]}
+            text={tool}
+            type="ternary"
+            static={true}
+          />
+        ))
+      }
     </div>
   </div>
-</div>
+</article>

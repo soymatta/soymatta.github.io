@@ -1,13 +1,12 @@
 ---
 import Buttons from "./Buttons.astro";
-import GithubIcon from "../images/GithubIcon.svg?raw";
-import LinkedinIcon from "../images/LinkedinIcon.svg?raw";
+import GithubIcon from "../images/icon-github.svg?raw";
+import LinkedinIcon from "../images/icon-linkedin.svg?raw";
 ---
 
-<footer class="mt-20 py-10 border-t" style="border-color: var(--border-color);">
-  <div class="flex flex-col items-center justify-between">
-    <!-- Column 1: Social icons -->
-    <div class="flex flex-row gap-3">
+<footer class="mt-24 bg-footer-bg pt-10 pb-8 rounded-t-[50px]">
+  <div class="flex flex-col items-center gap-5">
+    <div class="flex gap-4">
       <Buttons
         icon={GithubIcon}
         text=""
@@ -24,33 +23,26 @@ import LinkedinIcon from "../images/LinkedinIcon.svg?raw";
       />
     </div>
 
-    <!-- Column 2: Nav links -->
-    <div class="flex flex-row gap-6">
-      <a href="#hero" class="footer-link">Sobre mi</a>
-      <a href="#studies" class="footer-link">Educacion</a>
-      <a href="#tools" class="footer-link">Herramientas</a>
-      <a href="#projects" class="footer-link">Proyectos</a>
-      <a href="#contact" class="footer-link">Contacto</a>
+    <div class="flex gap-6">
+      <a href="#hero" class="footer-link" data-i18n="nav.about">Sobre mi</a>
+      <a href="#studies" class="footer-link" data-i18n="nav.education">Educación</a>
+      <a href="#tools" class="footer-link" data-i18n="nav.tools">Herramientas</a>
+      <a href="#projects" class="footer-link" data-i18n="nav.projects">Proyectos</a>
+      <a href="#contact" class="footer-link" data-i18n="nav.contact">Contacto</a>
     </div>
 
-    <!-- Column 3: Credits -->
     <div>
-      <p class="text-sm" style="color: var(--text-tertiary);">
-        Creado por <strong class="font-istok-web">Yassed Matta</strong>
+      <p class="text-sm text-muted">
+        <span data-i18n="footer.created">Creado por</span> <strong>Yassed Matta</strong>
       </p>
     </div>
   </div>
 </footer>
 
 <style>
+  @reference "../styles/global.css";
+
   .footer-link {
-    font-family: "Istok Web", sans-serif;
-    font-size: 0.85rem;
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .footer-link:hover {
-    color: var(--text-secondary);
+    @apply font-istok text-sm text-fg no-underline transition-colors duration-200 hover:text-accent;
   }
 </style>
