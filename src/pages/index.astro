@@ -2,63 +2,276 @@
 import "../styles/global.css";
 
 // Components
+import Navbar from "../components/Navbar.astro";
 import Projects from "../components/Projects.astro";
 import Studies from "../components/Studies.astro";
 import ToolsPills from "../components/ToolsPills.astro";
+import Buttons from "../components/Buttons.astro";
+import Footer from "../components/Footer.astro";
+
+// Icons
+import PythonIcon from "../images/PythonIcon.svg";
+import CopyIcon from "../images/CopyIcon.svg?raw";
+import CVIcon from "../images/CVIcon.svg?raw";
+import GithubIcon from "../images/GithubIcon.svg?raw";
+import LinkedinIcon from "../images/LinkedinIcon.svg?raw";
+import MailIcon from "../images/MailIcon.svg?raw";
+import PhoneIcon from "../images/PhoneIcon.svg?raw";
+import LocationIcon from "../images/LocationIcon.svg?raw";
+import SendIcon from "../images/SendIcon.svg?raw";
+import BookIcon from "../images/BookIcon.svg?raw";
+import CodeIcon from "../images/CodeIcon.svg?raw";
 
 // Images
-import PythonIcon from "../images/PythonIcon.svg";
+import MeCharacter from "../images/MeCharacter.png";
 ---
 
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/MeCharacter.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Yassed Matta | Portfolio</title>
   </head>
   <body>
-    <section id="hero">
-      <h1>¡Hola, soy Yassed Matta!</h1>
-      <p>
-        Programador Web y Mobile, enfocando mis conocimientos a la programación
-        Fullstack
-      </p>
+    <Navbar />
+
+    <!-- ========== HERO ========== -->
+    <section id="hero" class="flex flex-row items-center h-screen gap-12">
+      <div class="flex-1">
+        <h1>¡Hola, soy Yassed Matta!</h1>
+        <p class="text-lg" style="color: var(--text-tertiary);">
+          Programador Web y Mobile, enfocando mis conocimientos a la
+          programación Fullstack
+        </p>
+        <div class="flex flex-row gap-3 mt-6">
+          <Buttons
+            icon={GithubIcon}
+            text="Github"
+            href="https://github.com/soymatta"
+            target="_blank"
+            type="primary"
+          />
+          <Buttons
+            icon={LinkedinIcon}
+            text="Linkedin"
+            href="https://www.linkedin.com/in/mattayassed/"
+            target="_blank"
+            type="primary"
+          />
+        </div>
+        <div class="flex flex-row gap-3 mt-3">
+          <Buttons
+            icon={CVIcon}
+            text="Download CV"
+            href="/cv.pdf"
+            download
+            type="secondary"
+          />
+          <div id="email-group" class="relative inline-flex items-center">
+            <Buttons
+              id="email-btn"
+              icon={MailIcon}
+              text="yassed883@gmail.com"
+              type="secondary"
+            />
+            <Buttons
+              id="copy-btn"
+              icon={CopyIcon}
+              text="Click para copiar"
+              type="ternary"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="flex-shrink-0 rounded-full bg-white p-3 flex items-center justify-center">
+        <img class="w-52 h-52 rounded-full object-contain" src={MeCharacter.src} alt="Me character" />
+      </div>
     </section>
-    <section id="studies">
+
+    <!-- ========== ESTUDIOS ========== -->
+    <section id="studies" class="mt-20">
       <h2>Estudios</h2>
       <Studies
-        title="ingeniería de Sistemas"
+        title="Ingeniería de Sistemas"
         place="Universidad Libre"
         year="2020 - 2025"
-        description="Estudio profesional de ingeniería de sistema durante 6 semestres"
+        description="Estudio profesional de ingeniería de sistemas durante 6 semestres"
       />
     </section>
-    <section id="tools">
+
+    <!-- ========== LENGUAJES / FRAMEWORKS / HERRAMIENTAS ========== -->
+    <section id="tools" class="mt-20">
       <h2>Lenguajes</h2>
       <ToolsPills
         image={PythonIcon}
         description="Propósito general"
         title="Python"
       />
-      <h2>Frameworks</h2>
-      <h2>Herramientas</h2>
+      <h2 class="section-title-sm">Frameworks</h2>
+      <h2 class="section-title-sm">Herramientas</h2>
     </section>
-    <section id="projects">
+
+    <!-- ========== PROYECTOS ========== -->
+    <section id="projects" class="mt-20">
       <h2>Proyectos</h2>
       <Projects
-        image=""
         title="Proyecto 1"
         description="Descripción del proyecto 1"
-        repo=""
+        repo="https://github.com/soymatta"
         demo=""
-        tool1="Python"
-        tool2="Django"
-        tool3="JavaScript"
-        tool4="React"
+        tools={["Python", "Django", "JavaScript", "React"]}
       />
     </section>
-    <section id="contact"><h2>Contacto</h2></section>
+
+    <!-- ========== CONTACTO ========== -->
+    <section id="contact" class="mt-20">
+      <div class="flex flex-row gap-12">
+        <!-- Left: Info -->
+        <div class="flex-1">
+          <h2>Contacto</h2>
+          <p class="text-lg mt-4" style="color: var(--text-tertiary);">
+            ¿Quieres que haga parte de tu equipo? tienes alguna duda o propuesta sobre mi trabajo, puedes contactarme por el formulario o con estos datos:
+          </p>
+          <div class="flex flex-col gap-4 mt-6">
+            <div class="flex items-center gap-3">
+              <span set:html={MailIcon} class="flex-shrink-0 w-6 h-6" style="color: var(--text-secondary);" />
+              <span>yassed883@gmail.com</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span set:html={PhoneIcon} class="flex-shrink-0 w-6 h-6" style="color: var(--text-secondary);" />
+              <span>+57 304 536 4492</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span set:html={LocationIcon} class="flex-shrink-0 w-6 h-6" style="color: var(--text-secondary);" />
+              <span>Barranquilla / Colombia</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="flex-1">
+          <form id="contact-form" action="https://formspree.io/f/mqkrwzog" method="POST" class="flex flex-col gap-4">
+            <!-- Honeypot anti-spam -->
+            <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+
+            <!-- Time check -->
+            <input type="hidden" id="form-start" name="_timestamp" value="" />
+
+            <input type="text" name="nombre" placeholder="Nombre" required class="form-input" />
+            <input type="email" name="email" placeholder="Email" required class="form-input" />
+            <input type="text" name="asunto" placeholder="Asunto" required class="form-input" />
+            <textarea name="mensaje" placeholder="Mensaje" rows="5" required class="form-input resize-none"></textarea>
+
+            <!-- Math captcha -->
+            <div class="flex flex-col gap-2">
+              <label class="text-sm" style="color: var(--text-tertiary);">¿Cuánto es <span id="math-a"></span> + <span id="math-b"></span>?</label>
+              <input type="number" name="_answer" id="math-answer" placeholder="Respuesta" required class="form-input" />
+            </div>
+
+            <Buttons icon={SendIcon} text="Enviar" type="primary" />
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
   </body>
 </html>
+
+<style>
+  .form-input {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    font-family: "Varela", sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus {
+    border-color: var(--text-secondary);
+  }
+  .form-input::placeholder {
+    color: var(--text-tertiary);
+  }
+  .hidden {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  function initCopyEmail() {
+    const group = document.getElementById("email-group");
+    const copyBtn = document.getElementById("copy-btn");
+    const emailBtn = document.getElementById("email-btn");
+    if (!group || !copyBtn || !emailBtn) return;
+
+    copyBtn.style.display = "none";
+
+    emailBtn.addEventListener("mouseenter", () => {
+      copyBtn.style.display = "inline-flex";
+    });
+
+    group.addEventListener("mouseleave", () => {
+      copyBtn.style.display = "none";
+      const textSpan = copyBtn.querySelector("span:last-child");
+      if (textSpan) textSpan.textContent = "Click para copiar";
+    });
+
+    copyBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText("yassed883@gmail.com");
+      const textSpan = copyBtn.querySelector("span:last-child");
+      if (textSpan) textSpan.textContent = "Copiado!";
+      setTimeout(() => {
+        if (textSpan) textSpan.textContent = "Click para copiar";
+      }, 2000);
+    });
+  }
+
+  function initContactForm() {
+    const form = document.getElementById("contact-form") as HTMLFormElement;
+    const mathA = document.getElementById("math-a");
+    const mathB = document.getElementById("math-b");
+    const startTime = document.getElementById("form-start") as HTMLInputElement;
+
+    if (!form) return;
+
+    // Generate math captcha
+    const a = Math.floor(Math.random() * 20) + 1;
+    const b = Math.floor(Math.random() * 20) + 1;
+    if (mathA) mathA.textContent = String(a);
+    if (mathB) mathB.textContent = String(b);
+    if (startTime) startTime.value = String(Date.now());
+
+    form.addEventListener("submit", (e) => {
+      // Time check: must wait at least 3 seconds
+      const elapsed = Date.now() - Number(startTime.value);
+      if (elapsed < 3000) {
+        e.preventDefault();
+        alert("Por favor espera un momento antes de enviar.");
+        return;
+      }
+
+      // Math check
+      const answer = document.getElementById("math-answer") as HTMLInputElement;
+      if (Number(answer?.value) !== a + b) {
+        e.preventDefault();
+        alert("Respuesta matemática incorrecta.");
+        return;
+      }
+    });
+  }
+
+  initCopyEmail();
+  initContactForm();
+  document.addEventListener("astro:after-swap", () => {
+    initCopyEmail();
+    initContactForm();
+  });
+</script>

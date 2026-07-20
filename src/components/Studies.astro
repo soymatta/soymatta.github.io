@@ -2,11 +2,13 @@
 const { title, place, year, description } = Astro.props;
 ---
 
-<div class="flex flex-row">
-  <div>
-    <h3>{title}</h3>
-    <span>{place}</span>
-    <span>{year}</span>
+<div class="flex flex-row justify-between items-center">
+  <div class="flex flex-col">
+    <h3 class="text-[#2F53D7] text-3xl font-istok font-bold">{title}</h3>
+    <span class="font-varela text-2xl">{place}</span>
+    <span class="font-varela text-xl text-[#8A8A8A]">{year}</span>
   </div>
-  <p>{description}</p>
+  <div class="max-w-[500px]">
+    <p class="font-varela text-3xl text-[#8A8A8A]">{description}</p>
+  </div>
 </div>

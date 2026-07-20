@@ -1,0 +1,56 @@
+---
+import Buttons from "./Buttons.astro";
+import GithubIcon from "../images/GithubIcon.svg?raw";
+import LinkedinIcon from "../images/LinkedinIcon.svg?raw";
+---
+
+<footer class="mt-20 py-10 border-t" style="border-color: var(--border-color);">
+  <div class="flex flex-col items-center justify-between">
+    <!-- Column 1: Social icons -->
+    <div class="flex flex-row gap-3">
+      <Buttons
+        icon={GithubIcon}
+        text=""
+        href="https://github.com/soymatta"
+        target="_blank"
+        type="primary"
+      />
+      <Buttons
+        icon={LinkedinIcon}
+        text=""
+        href="https://www.linkedin.com/in/mattayassed/"
+        target="_blank"
+        type="primary"
+      />
+    </div>
+
+    <!-- Column 2: Nav links -->
+    <div class="flex flex-row gap-6">
+      <a href="#hero" class="footer-link">Sobre mi</a>
+      <a href="#studies" class="footer-link">Educacion</a>
+      <a href="#tools" class="footer-link">Herramientas</a>
+      <a href="#projects" class="footer-link">Proyectos</a>
+      <a href="#contact" class="footer-link">Contacto</a>
+    </div>
+
+    <!-- Column 3: Credits -->
+    <div>
+      <p class="text-sm" style="color: var(--text-tertiary);">
+        Creado por <strong class="font-istok-web">Yassed Matta</strong>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-link {
+    font-family: "Istok Web", sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-link:hover {
+    color: var(--text-secondary);
+  }
+</style>

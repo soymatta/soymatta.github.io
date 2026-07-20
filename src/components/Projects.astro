@@ -1,18 +1,27 @@
 ---
-const { image, title, description, repo, demo, tool1, tool2, tool3, tool4 } =
-  Astro.props;
+import Buttons from "./Buttons.astro";
+import GithubIcon from "../images/GithubIcon.svg?raw";
+import LinkIcon from "../images/LinkIcon.svg?raw";
+import PagePreviewTemplate from "../images/PagePreviewTemplate.png";
+
+const { title, description, repo, demo, tools = [] } = Astro.props;
 ---
 
-<div class="flex flex-row">
-  <img src={image} alt="Projects image" />
-  <div>
-    <h3>{title}</h3>
-    <p>{description}</p>
-    <btn>Code: {repo}</btn>
-    <btn>Demo: {demo}</btn>
-    <p>{tool1}</p>
-    <p>{tool2}</p>
-    <p>{tool3}</p>
-    <p>{tool4}</p>
+<div class="flex flex-row gap-8 items-start">
+  <div class="flex-1 rounded-xl overflow-hidden" style="background: var(--card-bg);">
+    <img class="w-full h-auto" src={PagePreviewTemplate.src} alt={title} />
+  </div>
+  <div class="flex-1">
+    <h3 class="text-3xl text-[var(--text-secondary)]">{title}</h3>
+    <p class="text-xl mt-2" style="color: var(--text-tertiary);">{description}</p>
+    <div class="flex flex-wrap gap-2 mt-3">
+      {tools.map((tool: string) => (
+        <span class="px-3 py-1 rounded-full text-sm" style="background: var(--card-bg); border: 1px solid var(--border-color);">{tool}</span>
+      ))}
+    </div>
+    <div class="flex flex-row gap-3 mt-4">
+      {repo && <Buttons icon={GithubIcon} text="Codigo Repo" href={repo} target="_blank" type="secondary" />}
+      {demo && <Buttons icon={LinkIcon} text="Demo" href={demo} target="_blank" type="primary" />}
+    </div>
   </div>
 </div>

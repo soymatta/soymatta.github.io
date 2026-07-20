@@ -1,0 +1,45 @@
+---
+const { icon, text, href, target, download, type = "primary", tooltip, id } = Astro.props;
+
+const styles: Record<string, string> = {
+  primary: "bg-white text-black hover:bg-gray-200",
+  secondary: "bg-[#2F53D7] text-white hover:bg-[#2443b8]",
+  ternary: "bg-[#272729] text-white hover:bg-[#3a3a3d]",
+};
+
+const iconOrder = type === "ternary" ? "order-last" : "order-first";
+const baseClass = `${styles[type] || styles.primary} rounded-full px-5 py-2 inline-flex items-center gap-2 cursor-pointer transition-colors`;
+const tagClass = `${baseClass} no-underline`;
+---
+
+{href ? (
+  <a id={id} href={href} target={target} download={download} class={tagClass} data-tooltip={tooltip}>
+    {icon && <span class:list={[iconOrder, "h-[25px] w-auto flex-shrink-0"]} set:html={icon} />}
+    {text && <span>{text}</span>}
+  </a>
+) : (
+  <button id={id} class={baseClass} data-tooltip={tooltip}>
+    {icon && <span class:list={[iconOrder, "h-[25px] w-auto flex-shrink-0"]} set:html={icon} />}
+    {text && <span>{text}</span>}
+  </button>
+)}
+
+<style>
+  [data-tooltip] {
+    position: relative;
+  }
+  [data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #272729;
+    color: #fff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    z-index: 10;
+  }
+</style>

@@ -1,27 +1,85 @@
-@import url("https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Varela&display=swap");
-
 @import "tailwindcss";
 
-:root {
-  /* Dark theme colors */
-  --dark-bg-color: #111113;
-  --dark-primary-text-color: #fff;
-  --dark-secondary-text-color: #2f53d7;
-  --dark-ternary-text-color: #8a8a8a;
+@layer base {
+  @font-face {
+    font-family: "Istok Web";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/IstokWeb-Regular.woff2") format("woff2");
+  }
 
-  /* Light theme colors */
+  @font-face {
+    font-family: "Istok Web";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("/fonts/IstokWeb-Bold.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Istok Web";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/IstokWeb-Italic.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Istok Web";
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url("/fonts/IstokWeb-BoldItalic.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Varela";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/Varela-Regular.woff2") format("woff2");
+  }
+}
+
+:root {
+  --bg-color: #111113;
+  --text-primary: #ffffff;
+  --text-secondary: #2f53d7;
+  --text-tertiary: #8a8a8a;
+  --card-bg: #272729;
+  --border-color: #3a3a3d;
+}
+
+:root.light {
+  --bg-color: #f5f5f5;
+  --text-primary: #111113;
+  --text-secondary: #2f53d7;
+  --text-tertiary: #6a6a6a;
+  --card-bg: #ffffff;
+  --border-color: #d1d1d1;
 }
 
 body {
-  background-color: var(--dark-bg-color);
-  color: var(--dark-primary-text-color);
-  font-family: "Istok Web", "Varela", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: "Varela", sans-serif;
+  margin: 0;
+  padding: 0 100px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.font-istok-web {
+h1, h2, h3, h4, h5, h6, strong, b {
   font-family: "Istok Web", sans-serif;
 }
 
-.font-varela {
-  font-family: "Varela", sans-serif;
+h2 {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.section-title-sm {
+  font-size: 32px;
+  font-weight: 700;
+  font-family: "Istok Web", sans-serif;
 }
