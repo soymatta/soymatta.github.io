@@ -23,7 +23,7 @@ import LinkedinIcon from "../images/icon-linkedin.svg?raw";
       />
     </div>
 
-    <div class="flex gap-6">
+    <div class="flex flex-wrap justify-center gap-4 md:gap-6">
       <a href="#hero" class="footer-link" data-i18n="nav.about">Sobre mi</a>
       <a href="#studies" class="footer-link" data-i18n="nav.education">Educación</a>
       <a href="#tools" class="footer-link" data-i18n="nav.tools">Herramientas</a>
@@ -43,6 +43,6 @@ import LinkedinIcon from "../images/icon-linkedin.svg?raw";
   @reference "../styles/global.css";
 
   .footer-link {
-    @apply font-istok text-sm text-fg no-underline transition-colors duration-200 hover:text-accent;
+    @apply font-istok text-sm text-fg no-underline transition-colors duration-200 hover:text-accent min-w-[80px] text-center;
   }
 </style>

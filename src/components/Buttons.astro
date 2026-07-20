@@ -18,7 +18,8 @@ const styles: Record<string, string> = {
   ternary: "bg-card text-fg hover:bg-card-hover border-2 border-line",
 };
 
-const baseClass = `${styles[type] || styles.primary} rounded-full px-5 h-[44px] inline-flex items-center gap-2 cursor-pointer transition-colors whitespace-nowrap`;
+const textClass = text ? "min-w-[120px] justify-center" : "";
+const baseClass = `${styles[type] || styles.primary} rounded-full px-5 h-[44px] inline-flex items-center gap-2 cursor-pointer transition-colors whitespace-nowrap ${textClass}`;
 const tagClass = `${baseClass} no-underline`;
 const staticClass = staticPill ? "tool-pill-static" : "";
 ---

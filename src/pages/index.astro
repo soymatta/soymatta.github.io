@@ -85,16 +85,16 @@ const inputClass =
   <body>
     <Navbar />
 
-    <main class="px-[160px]">
+    <main class="px-5 sm:px-8 md:px-12 lg:px-20 xl:px-40">
       <!-- ========== HERO ========== -->
-      <section id="hero" class="flex items-center justify-between min-h-screen">
-        <div class="flex-1 max-w-[600px]">
-          <h1 class="animate-fade-in-left" data-i18n="hero.title">¡Hola, soy Yassed Matta!</h1>
-          <p class="text-lg text-muted mt-4 animate-fade-in-left delay-1" data-i18n="hero.subtitle">
+      <section id="hero" class="flex flex-col lg:flex-row items-center justify-center lg:justify-between lg:min-h-screen gap-4 lg:gap-0 pt-14 lg:pt-0">
+        <div class="flex-1 w-full lg:max-w-[600px] text-center lg:text-left">
+          <h1 class="animate-fade-in-left min-h-[3.6em] lg:min-h-[2.4em] mt-4 lg:mt-0" data-i18n="hero.title">¡Hola, soy Yassed Matta!</h1>
+          <p class="text-base sm:text-lg text-muted mt-1 lg:mt-4 animate-fade-in-left delay-1 min-h-[4.5em] lg:min-h-[3em]" data-i18n="hero.subtitle">
             Programador Web y Mobile con conocimientos en desarrollo Fullstack.
             Especializado en Python, JavaScript, frameworks modernos y bases de datos.
           </p>
-          <div class="flex gap-3 mt-8 animate-fade-in-up delay-2">
+          <div class="flex flex-wrap gap-3 mt-3 lg:mt-8 animate-fade-in-up delay-2 justify-center lg:justify-start">
             <Buttons
               icon={GithubIcon}
               text="Github"
@@ -112,13 +112,11 @@ const inputClass =
               textKey="hero.linkedin"
             />
           </div>
-          <div class="flex gap-3 mt-3 animate-fade-in-up delay-3">
+          <div class="flex flex-wrap gap-3 mt-3 animate-fade-in-up delay-3 justify-center lg:justify-start">
             <Buttons
               id="cv-btn"
               icon={CVIcon}
               text="Descargar CV"
-              href="/cv.pdf"
-              download
               type="secondary"
               textKey="hero.cv"
             />
@@ -146,11 +144,11 @@ const inputClass =
           </div>
         </div>
         <div
-          class="shrink-0 rounded-full bg-white p-4 flex items-center justify-center animate-fade-in-right animate-float"
+          class="shrink-0 rounded-full bg-white p-3 sm:p-4 flex items-center justify-center animate-fade-in-right animate-float"
           id="hero-circle"
         >
           <img
-            class="w-80 h-80 rounded-full object-contain"
+            class="w-52 h-52 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full object-contain"
             src={MeCharacter.src}
             alt="Yassed Matta"
           />
@@ -272,16 +270,16 @@ const inputClass =
           <span class="w-10 h-10 shrink-0 icon-outline" set:html={MailIcon} />
           <span data-i18n="contact.title">Contacto</span>
         </h2>
-        <div class="flex gap-12 mt-8">
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 mt-8">
           <!-- Left: Info -->
           <div class="flex-1 flex flex-col justify-center">
             <h3
-              class="font-bold text-3xl text-fg inline-block border-b-[3px] border-accent pb-1 self-start"
+              class="font-bold text-2xl sm:text-3xl text-fg inline-block border-b-[3px] border-accent pb-1 self-start min-h-[1.4em]"
               data-i18n="contact.heading"
             >
               ¡Contáctame!
             </h3>
-            <p class="text-base mt-4 text-muted leading-relaxed" data-i18n="contact.desc">
+            <p class="text-sm sm:text-base mt-4 text-muted leading-relaxed min-h-[4.5em]" data-i18n="contact.desc">
               Si deseas que forme parte de tu equipo, tienes alguna duda o
               propuesta sobre mi trabajo, puedes contactarme por el formulario o
               con estos datos:
@@ -555,6 +553,93 @@ const inputClass =
     },
   };
 
+  // ===== CV DOWNLOAD =====
+  function initCV() {
+    const cvBtn = document.getElementById("cv-btn") as HTMLAnchorElement | null;
+    if (!cvBtn) return;
+
+    const updateCV = (lang: string) => {
+      const href = lang === "en" ? "/EN_Yassed Matta.pdf" : "/ES_Yassed Matta.pdf";
+      cvBtn.href = href;
+      cvBtn.download = href.split("/").pop() || "";
+    };
+
+    updateCV(localStorage.getItem("lang") || "es");
+
+    const langBtn = document.getElementById("lang-toggle");
+    langBtn?.addEventListener("click", () => {
+      setTimeout(() => {
+        const newLang = localStorage.getItem("lang") || "es";
+        updateCV(newLang);
+      }, 0);
+    });
+
+    const langBtnMobile = document.getElementById("lang-toggle-mobile");
+    langBtnMobile?.addEventListener("click", () => {
+      setTimeout(() => {
+        const newLang = localStorage.getItem("lang") || "es";
+        updateCV(newLang);
+      }, 0);
+    });
+  }
+
+  // ===== MOBILE MENU =====
+  function initMobileMenu() {
+    const menuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const iconMenu = document.getElementById("icon-menu");
+    const iconClose = document.getElementById("icon-close");
+    const mobileLinks = document.querySelectorAll(".mobile-nav-link");
+
+    if (!menuBtn || !mobileMenu) return;
+
+    const toggle = () => {
+      const isOpen = !mobileMenu.classList.contains("pointer-events-none");
+
+      if (isOpen) {
+        mobileMenu.classList.add("opacity-0", "pointer-events-none");
+        mobileMenu.classList.remove("opacity-100", "pointer-events-auto");
+        iconMenu?.classList.remove("hidden");
+        iconClose?.classList.add("hidden");
+      } else {
+        mobileMenu.classList.remove("opacity-0", "pointer-events-none");
+        mobileMenu.classList.add("opacity-100", "pointer-events-auto");
+        iconMenu?.classList.add("hidden");
+        iconClose?.classList.remove("hidden");
+      }
+    };
+
+    menuBtn.addEventListener("click", toggle);
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (!mobileMenu.classList.contains("pointer-events-none")) {
+          toggle();
+        }
+      });
+    });
+
+    const themeBtnMobile = document.getElementById("theme-toggle-mobile");
+    themeBtnMobile?.addEventListener("click", () => {
+      const desktopBtn = document.getElementById("theme-toggle");
+      desktopBtn?.click();
+      const isLight = document.documentElement.classList.contains("light");
+      const iconSunM = document.getElementById("icon-sun-mobile");
+      const iconMoonM = document.getElementById("icon-moon-mobile");
+      iconSunM?.classList.toggle("hidden", !isLight);
+      iconMoonM?.classList.toggle("hidden", isLight);
+    });
+
+    const langBtnMobile = document.getElementById("lang-toggle-mobile");
+    langBtnMobile?.addEventListener("click", () => {
+      const desktopBtn = document.getElementById("lang-toggle");
+      desktopBtn?.click();
+      const isEsVisible = !document.getElementById("flag-es")?.classList.contains("hidden");
+      document.getElementById("flag-es-mobile")?.classList.toggle("hidden", !isEsVisible);
+      document.getElementById("flag-us-mobile")?.classList.toggle("hidden", isEsVisible);
+    });
+  }
+
   // ===== THEME =====
   function initTheme() {
     const root = document.documentElement;
@@ -566,8 +651,10 @@ const inputClass =
     const savedTheme = localStorage.getItem("theme") || "dark";
     if (savedTheme === "light") {
       root.classList.add("light");
-      iconSun?.classList.add("hidden");
-      iconMoon?.classList.remove("hidden");
+      iconSun?.classList.remove("hidden");
+      iconMoon?.classList.add("hidden");
+      document.getElementById("icon-sun-mobile")?.classList.remove("hidden");
+      document.getElementById("icon-moon-mobile")?.classList.add("hidden");
       if (heroCircle) {
         heroCircle.classList.remove("bg-white");
         heroCircle.classList.add("bg-black");
@@ -575,9 +662,6 @@ const inputClass =
     }
 
     themeBtn?.addEventListener("click", () => {
-      const isCurrentlyLight = root.classList.contains("light");
-
-      // Rotate animation on the button
       const btn = themeBtn;
       btn.style.transform = "rotate(360deg)";
       setTimeout(() => { btn.style.transform = ""; }, 300);
@@ -585,10 +669,9 @@ const inputClass =
       root.classList.toggle("light");
       const isLight = root.classList.contains("light");
       localStorage.setItem("theme", isLight ? "light" : "dark");
-      iconSun?.classList.toggle("hidden", isLight);
-      iconMoon?.classList.toggle("hidden", !isLight);
+      iconSun?.classList.toggle("hidden", !isLight);
+      iconMoon?.classList.toggle("hidden", isLight);
 
-      // Toggle hero circle bg: black in light, white in dark
       if (heroCircle) {
         if (isLight) {
           heroCircle.classList.remove("bg-white");
@@ -632,14 +715,16 @@ const inputClass =
     if (savedLang === "en") {
       flagEs?.classList.add("hidden");
       flagUs?.classList.remove("hidden");
+      document.getElementById("flag-es-mobile")?.classList.add("hidden");
+      document.getElementById("flag-us-mobile")?.classList.remove("hidden");
     }
     applyLang(savedLang);
 
     langBtn?.addEventListener("click", () => {
       const isEsVisible = !flagEs?.classList.contains("hidden");
       const newLang = isEsVisible ? "en" : "es";
-      flagEs?.classList.toggle("hidden", !isEsVisible);
-      flagUs?.classList.toggle("hidden", isEsVisible);
+      flagEs?.classList.toggle("hidden", isEsVisible);
+      flagUs?.classList.toggle("hidden", !isEsVisible);
       localStorage.setItem("lang", newLang);
       applyLang(newLang);
     });
@@ -711,9 +796,11 @@ const inputClass =
   function initAll() {
     initTheme();
     initLang();
+    initCV();
     initCopyEmail();
     initContactForm();
     initReveal();
+    initMobileMenu();
   }
 
   initAll();

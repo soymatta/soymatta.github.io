@@ -39,8 +39,8 @@ const toolIcons: Record<string, string> = {
 const { title, description, repo, demo, tools = [], titleKey, descKey, repoText, demoText, repoKey, demoKey } = Astro.props;
 ---
 
-<article class="flex gap-10 items-start py-8">
-  <div class="rounded-2xl overflow-hidden bg-card max-w-[400px] shrink-0 border border-line">
+<article class="flex flex-col lg:flex-row gap-6 lg:gap-10 items-start py-8">
+  <div class="rounded-2xl overflow-hidden bg-card w-full max-w-[320px] sm:max-w-[400px] mx-auto lg:mx-0 lg:max-w-[400px] lg:shrink-0 border border-line">
     <img
       class="w-full h-auto"
       src={PagePreviewTemplate.src}
@@ -48,15 +48,15 @@ const { title, description, repo, demo, tools = [], titleKey, descKey, repoText,
       loading="lazy"
     />
   </div>
-  <div class="flex-1 min-w-0">
-    <h3 class="text-2xl text-accent font-bold" data-i18n={titleKey}>
+  <div class="flex-1 min-w-0 w-full">
+    <h3 class="text-xl sm:text-2xl text-accent font-bold min-h-[1.8em]" data-i18n={titleKey}>
       {title}
     </h3>
-    <p class="text-lg mt-3 text-muted" data-i18n={descKey}>
+    <p class="text-base sm:text-lg mt-3 text-muted min-h-[5em] sm:min-h-[4em]" data-i18n={descKey}>
       {description}
     </p>
 
-    <div class="flex gap-3 mt-5">
+    <div class="flex flex-wrap gap-3 mt-5">
       {
         repo && (
           <Buttons
