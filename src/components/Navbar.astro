@@ -23,6 +23,7 @@ import CloseIcon from "../images/icon-close.svg?raw";
     id="theme-toggle"
     class="flex items-center justify-center w-8 h-8 rounded-full border-none bg-transparent text-fg cursor-pointer transition-colors duration-200 hover:bg-fg/10 p-0"
     aria-label="Cambiar tema"
+    data-i18n-aria="aria.toggleTheme"
   >
     <span id="icon-sun" class="hidden icon-outline w-[18px] h-[18px] transition-transform duration-300" set:html={SunIcon} />
     <span id="icon-moon" class="icon-outline w-[18px] h-[18px] transition-transform duration-300" set:html={MoonIcon} />
@@ -32,6 +33,7 @@ import CloseIcon from "../images/icon-close.svg?raw";
     id="lang-toggle"
     class="flex items-center justify-center w-8 h-8 rounded-full border-none bg-transparent text-fg cursor-pointer transition-colors duration-200 hover:bg-fg/10 p-0"
     aria-label="Cambiar idioma"
+    data-i18n-aria="aria.toggleLang"
   >
     <span id="flag-es" set:html={FlagES} />
     <span id="flag-us" class="hidden" set:html={FlagUS} />
@@ -47,6 +49,7 @@ import CloseIcon from "../images/icon-close.svg?raw";
     id="mobile-menu-btn"
     class="flex items-center justify-center w-10 h-10 rounded-full border border-line bg-card/80 backdrop-blur-md cursor-pointer transition-colors duration-200 hover:bg-card-hover p-0"
     aria-label="Abrir menú"
+    data-i18n-aria="aria.openMenu"
   >
     <span id="icon-menu" class="icon-outline w-5 h-5 text-fg" set:html={MenuIcon} />
     <span id="icon-close" class="hidden icon-outline w-5 h-5 text-fg" set:html={CloseIcon} />
@@ -71,6 +74,7 @@ import CloseIcon from "../images/icon-close.svg?raw";
       id="theme-toggle-mobile"
       class="flex items-center justify-center w-10 h-10 rounded-full border border-line bg-card text-fg cursor-pointer transition-colors duration-200 hover:bg-card-hover p-0"
       aria-label="Cambiar tema"
+      data-i18n-aria="aria.toggleTheme"
     >
       <span id="icon-sun-mobile" class="hidden icon-outline w-5 h-5 transition-transform duration-300" set:html={SunIcon} />
       <span id="icon-moon-mobile" class="icon-outline w-5 h-5 transition-transform duration-300" set:html={MoonIcon} />
@@ -80,6 +84,7 @@ import CloseIcon from "../images/icon-close.svg?raw";
       id="lang-toggle-mobile"
       class="flex items-center justify-center w-10 h-10 rounded-full border border-line bg-card text-fg cursor-pointer transition-colors duration-200 hover:bg-card-hover p-0"
       aria-label="Cambiar idioma"
+      data-i18n-aria="aria.toggleLang"
     >
       <span id="flag-es-mobile" set:html={FlagES} />
       <span id="flag-us-mobile" class="hidden" set:html={FlagUS} />

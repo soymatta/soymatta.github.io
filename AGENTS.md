@@ -58,10 +58,10 @@ Email tooltip hover is CSS-only (Tailwind `group-hover:*` utilities). Only the c
 
 ## SEO
 
-Meta tags (description, Open Graph, canonical) are in `index.astro` `<head>`. Site URL: `https://soymatta.github.io/`.
+Meta tags (description, Open Graph, canonical, JSON-LD) are in `index.astro` `<head>`. SEO content is translated dynamically via `applyLang()` using `seo.*` translation keys. An inline `<head>` script sets `<html lang>` from localStorage to reduce language flash. Site URL: `https://soymatta.github.io/`.
 
 ## Gotchas
 
 - Tailwind v4 `@apply` in scoped `<style>` blocks requires `@reference "../styles/global.css"` or it will fail with "unknown utility class"
 - Dark/light theme uses manual `.light` class toggle, not `prefers-color-scheme`
-- "Download CV" links to `/cv.pdf` which does not exist in `public/` — the actual PDFs are at the repo root (`EN_Yassed Matta.pdf`, `ES_Yassed Matta.pdf`)
+- "Download CV" links to `public/ES_Yassed Matta.pdf` and `public/EN_Yassed Matta.pdf` — the JS `initCV()` dynamically swaps the `href` and `download` attributes based on the selected language

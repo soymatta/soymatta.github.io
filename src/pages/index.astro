@@ -48,16 +48,18 @@ const inputClass =
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Yassed Matta | Desarrollador Fullstack</title>
+    <title id="meta-title">Yassed Matta | Desarrollador Fullstack</title>
     <meta
+      id="meta-description"
       name="description"
       content="Portfolio de Yassed Matta — Desarrollador Web y Mobile Fullstack. Python, JavaScript, TypeScript, React, Django, Node.js, Astro."
     />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <meta property="og:title" content="Yassed Matta | Desarrollador Fullstack" />
+    <meta id="og-title" property="og:title" content="Yassed Matta | Desarrollador Fullstack" />
     <meta
+      id="og-description"
       property="og:description"
       content="Portfolio de Yassed Matta — Desarrollador Web y Mobile Fullstack"
     />
@@ -69,7 +71,7 @@ const inputClass =
     />
     <link rel="canonical" href="https://soymatta.github.io/" />
 
-    <script type="application/ld+json" set:html={JSON.stringify({
+    <script id="meta-ld" type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Yassed Matta",
@@ -81,6 +83,9 @@ const inputClass =
         "https://www.linkedin.com/in/mattayassed/"
       ]
     })} />
+    <script is:inline>
+      (function(){var l=localStorage.getItem("lang");if(l)document.documentElement.lang=l;})();
+    </script>
   </head>
   <body>
     <Navbar />
@@ -119,6 +124,8 @@ const inputClass =
               text="Descargar CV"
               type="secondary"
               textKey="hero.cv"
+              href="/ES_Yassed Matta.pdf"
+              download="ES_Yassed Matta.pdf"
             />
             <div
               class="group relative inline-flex flex-col items-start gap-2"
@@ -151,6 +158,7 @@ const inputClass =
             class="w-52 h-52 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full object-contain"
             src={MeCharacter.src}
             alt="Yassed Matta"
+            loading="eager"
           />
         </div>
       </section>
@@ -236,30 +244,59 @@ const inputClass =
         </h2>
         <div class="mt-6 space-y-8">
           <Projects
+            title="EBookToolbox"
+            description="Toolkit completo para gestionar ebooks disponible como CLI en Python y aplicación web. Incluye compresión de PDF/EPUB, conversión de formato, edición de metadata, renombrado automático y conversión a voz. Procesamiento 100% local sin subida de archivos."
+            repo="https://github.com/soymatta/EBookTools"
+            demo="https://ebooktools.vercel.app/"
+            tools={["TypeScript", "Python"]}
+            image="ebooktoolbox"
+            titleKey="projects.p3.title"
+            descKey="projects.p3.desc"
+            repoText="Código Repo"
+            demoText="Demo"
+            repoKey="projects.p3.repo"
+            demoKey="projects.p3.demo"
+          />
+          <Projects
+            title="Sphothon"
+            description="Herramienta web para organizar, analizar y gestionar tu biblioteca de Spotify. Incluye detección de duplicados, estadísticas avanzadas, comparación de playlists, sincronización de canciones favoritas y exportación de datos. Conexión directa con la API de Spotify."
+            repo="https://github.com/soymatta/Sphothon"
+            demo="https://sphothon.vercel.app/"
+            tools={["TypeScript", "React"]}
+            image="sphothon"
+            imageSide="right"
+            titleKey="projects.p4.title"
+            descKey="projects.p4.desc"
+            repoKey="projects.p4.repo"
+            demoKey="projects.p4.demo"
+          />
+          <Projects
+            title="Agents & Skills"
+            description="Colección seleccionada de definiciones de agentes y skills para OpenCode, Claude Code, Cursor y Windsurf. Incluye 13 skills, 7 agentes y compatibilidad con 4 plataformas. Instalación interactiva con Python."
+            repo="https://github.com/soymatta/Agents-Skills"
+            demo="https://agents-skills-livid.vercel.app/"
+            tools={["Python"]}
+            image="agentsandskills"
+            titleKey="projects.p5.title"
+            descKey="projects.p5.desc"
+            repoText="Código Repo"
+            demoText="Demo"
+            repoKey="projects.p5.repo"
+            demoKey="projects.p5.demo"
+          />
+          <Projects
             title="Aplicación Móvil de Reciclaje"
             description="Aplicación móvil orientada a la sostenibilidad ambiental. Implementación del flujo de autenticación completa, sincronización de base de datos en la nube en tiempo real utilizando Firebase, y gestión de usuarios. Obtuvo el 1.er Puesto en Competencia de Desarrollo."
-            repo="https://github.com/soymatta"
-            demo="https://github.com/soymatta"
             tools={["Flutter", "Firebase"]}
             titleKey="projects.p1.title"
             descKey="projects.p1.desc"
-            repoText="Código Repo"
-            demoText="Demo"
-            repoKey="projects.p1.repo"
-            demoKey="projects.p1.demo"
           />
           <Projects
             title="Plataforma E-Shop"
             description="Plataforma de comercio electrónico con arquitectura robusta utilizando Flask para la lógica de servidor, MySQL para la gestión relacional de datos y un sistema de autenticación de usuarios. Obtuvo el 2.º Puesto en Competencia de Desarrollo."
-            repo="https://github.com/soymatta"
-            demo="https://github.com/soymatta"
             tools={["Python", "Flask", "MySQL"]}
             titleKey="projects.p2.title"
             descKey="projects.p2.desc"
-            repoText="Código Repo"
-            demoText="Demo"
-            repoKey="projects.p2.repo"
-            demoKey="projects.p2.demo"
           />
         </div>
       </section>
@@ -308,7 +345,7 @@ const inputClass =
           <div class="flex-1">
             <form
               id="contact-form"
-              action="https://formspree.io/f/mqkrwzog"
+              action="https://formspree.io/f/mzdnkzay"
               method="POST"
               class="flex flex-col gap-5"
             >
@@ -328,7 +365,7 @@ const inputClass =
                 <label class="font-istok text-sm font-bold text-fg uppercase tracking-wide" data-i18n="contact.name">Nombre</label>
                 <input
                   type="text"
-                  name="nombre"
+                  name="name"
                   data-placeholder="contact.name_ph"
                   placeholder="Escribe tu nombre completo"
                   required
@@ -349,7 +386,7 @@ const inputClass =
                 <label class="font-istok text-sm font-bold text-fg uppercase tracking-wide" data-i18n="contact.subject">Asunto</label>
                 <input
                   type="text"
-                  name="asunto"
+                  name="subject"
                   data-placeholder="contact.subject_ph"
                   placeholder="¿En qué puedo ayudarte?"
                   required
@@ -359,7 +396,7 @@ const inputClass =
               <div class="flex flex-col gap-1.5">
                 <label class="font-istok text-sm font-bold text-fg uppercase tracking-wide" data-i18n="contact.message">Mensaje</label>
                 <textarea
-                  name="mensaje"
+                  name="message"
                   data-placeholder="contact.message_ph"
                   placeholder="Escribe tu mensaje aquí..."
                   rows="5"
@@ -383,6 +420,8 @@ const inputClass =
                 />
               </div>
 
+              <div id="form-error" class="hidden text-sm font-bold text-red-400 mt-1"></div>
+              <div id="form-success" class="hidden text-sm font-bold text-green-400 mt-1" data-i18n="contact.success">¡Mensaje enviado con éxito!</div>
               <div class="flex justify-start mt-1">
                 <Buttons icon={SendIcon} text="Enviar" type="secondary" id="send-btn" textKey="contact.send" />
               </div>
@@ -397,6 +436,19 @@ const inputClass =
 </html>
 
 <script>
+  // ===== JSON-LD BASE (avoid parse/stringify round-trip) =====
+  const ldBase = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yassed Matta",
+    "url": "https://soymatta.github.io/",
+    "email": "yassed883@gmail.com",
+    "sameAs": [
+      "https://github.com/soymatta",
+      "https://www.linkedin.com/in/mattayassed/"
+    ]
+  };
+
   // ===== TRANSLATIONS =====
   const translations: Record<string, Record<string, string>> = {
     es: {
@@ -457,6 +509,18 @@ const inputClass =
       "projects.p2.desc": "Plataforma de comercio electrónico con arquitectura robusta utilizando Flask para la lógica de servidor, MySQL para la gestión relacional de datos y un sistema de autenticación de usuarios. Obtuvo el 2.º Puesto en Competencia de Desarrollo.",
       "projects.p2.repo": "Código Repo",
       "projects.p2.demo": "Demo",
+      "projects.p3.title": "EBookToolbox",
+      "projects.p3.desc": "Toolkit completo para gestionar ebooks disponible como CLI en Python y aplicación web. Incluye compresión de PDF/EPUB, conversión de formato, edición de metadata, renombrado automático y conversión a voz. Procesamiento 100% local sin subida de archivos.",
+      "projects.p3.repo": "Código Repo",
+      "projects.p3.demo": "Demo",
+      "projects.p4.title": "Sphothon",
+      "projects.p4.desc": "Herramienta web para organizar, analizar y gestionar tu biblioteca de Spotify. Incluye detección de duplicados, estadísticas avanzadas, comparación de playlists, sincronización de canciones favoritas y exportación de datos. Conexión directa con la API de Spotify.",
+      "projects.p4.repo": "Código Repo",
+      "projects.p4.demo": "Demo",
+      "projects.p5.title": "Agents & Skills",
+      "projects.p5.desc": "Colección seleccionada de definiciones de agentes y skills para OpenCode, Claude Code, Cursor y Windsurf. Incluye 13 skills, 7 agentes y compatibilidad con 4 plataformas. Instalación interactiva con Python.",
+      "projects.p5.repo": "Código Repo",
+      "projects.p5.demo": "Demo",
       // Contact
       "contact.title": "Contacto",
       "contact.heading": "¡Contáctame!",
@@ -474,6 +538,19 @@ const inputClass =
       "contact.wrong": "Respuesta matemática incorrecta.",
       // Footer
       "footer.created": "Creado por",
+      // SEO
+      "seo.title": "Yassed Matta | Desarrollador Fullstack",
+      "seo.description": "Portfolio de Yassed Matta — Desarrollador Web y Mobile Fullstack. Python, JavaScript, TypeScript, React, Django, Node.js, Astro.",
+      "seo.ogDescription": "Portfolio de Yassed Matta — Desarrollador Web y Mobile Fullstack",
+      "seo.jobTitle": "Desarrollador Fullstack",
+      // Aria
+      "aria.toggleTheme": "Cambiar tema",
+      "aria.toggleLang": "Cambiar idioma",
+      "aria.openMenu": "Abrir menú",
+      // Form errors
+      "contact.pleaseWait": "Por favor espera un momento antes de enviar.",
+      "contact.wrongAnswer": "Respuesta matemática incorrecta.",
+      "contact.success": "¡Mensaje enviado con éxito!",
     },
     en: {
       // Navbar
@@ -533,6 +610,18 @@ const inputClass =
       "projects.p2.desc": "E-commerce platform with robust architecture using Flask for server logic, MySQL for relational data management and a user authentication system. Won 2nd Place in Development Competition.",
       "projects.p2.repo": "Source Code",
       "projects.p2.demo": "Demo",
+      "projects.p3.title": "EBookToolbox",
+      "projects.p3.desc": "Complete toolkit for managing ebooks available as a Python CLI and web app. Includes PDF/EPUB compression, format conversion, metadata editing, automatic renaming and text-to-speech. 100% local processing with no file uploads.",
+      "projects.p3.repo": "Source Code",
+      "projects.p3.demo": "Live Demo",
+      "projects.p4.title": "Sphothon",
+      "projects.p4.desc": "Web tool to organize, analyze, and manage your Spotify library. Features duplicate detection, advanced stats, playlist comparison, liked songs sync, and data export. Direct connection to the Spotify API.",
+      "projects.p4.repo": "Source Code",
+      "projects.p4.demo": "Live Demo",
+      "projects.p5.title": "Agents & Skills",
+      "projects.p5.desc": "A curated collection of agent and skill definitions for OpenCode, Claude Code, Cursor, and Windsurf. Features 13 skills, 7 agents, and 4 platform support. Interactive Python installer.",
+      "projects.p5.repo": "Source Code",
+      "projects.p5.demo": "Live Demo",
       // Contact
       "contact.title": "Contact",
       "contact.heading": "Get in Touch!",
@@ -550,6 +639,19 @@ const inputClass =
       "contact.wrong": "Incorrect math answer.",
       // Footer
       "footer.created": "Created by",
+      // SEO
+      "seo.title": "Yassed Matta | Fullstack Developer",
+      "seo.description": "Yassed Matta's Portfolio — Web and Mobile Fullstack Developer. Python, JavaScript, TypeScript, React, Django, Node.js, Astro.",
+      "seo.ogDescription": "Yassed Matta's Portfolio — Web and Mobile Fullstack Developer",
+      "seo.jobTitle": "Fullstack Developer",
+      // Aria
+      "aria.toggleTheme": "Toggle theme",
+      "aria.toggleLang": "Toggle language",
+      "aria.openMenu": "Open menu",
+      // Form errors
+      "contact.pleaseWait": "Please wait a moment before submitting.",
+      "contact.wrongAnswer": "Incorrect math answer.",
+      "contact.success": "Message sent successfully!",
     },
   };
 
@@ -704,6 +806,32 @@ const inputClass =
         (el as HTMLInputElement).placeholder = t[key];
       }
     });
+
+    // Translate aria-labels
+    document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+      const key = el.getAttribute("data-i18n-aria");
+      if (key && t[key]) {
+        el.setAttribute("aria-label", t[key]);
+      }
+    });
+
+    // Update SEO meta tags
+    const titleEl = document.getElementById("meta-title");
+    if (titleEl && t["seo.title"]) titleEl.textContent = t["seo.title"];
+
+    const descEl = document.getElementById("meta-description");
+    if (descEl && t["seo.description"]) descEl.setAttribute("content", t["seo.description"]);
+
+    const ogTitleEl = document.getElementById("og-title");
+    if (ogTitleEl && t["seo.title"]) ogTitleEl.setAttribute("content", t["seo.title"]);
+
+    const ogDescEl = document.getElementById("og-description");
+    if (ogDescEl && t["seo.ogDescription"]) ogDescEl.setAttribute("content", t["seo.ogDescription"]);
+
+    const ldEl = document.getElementById("meta-ld");
+    if (ldEl && t["seo.jobTitle"]) {
+      ldEl.textContent = JSON.stringify({ ...ldBase, jobTitle: t["seo.jobTitle"] });
+    }
   }
 
   function initLang() {
@@ -750,6 +878,8 @@ const inputClass =
     const mathA = document.getElementById("math-a");
     const mathB = document.getElementById("math-b");
     const startTime = document.getElementById("form-start") as HTMLInputElement;
+    const errorEl = document.getElementById("form-error");
+    const successEl = document.getElementById("form-success");
 
     if (!form) return;
 
@@ -759,20 +889,54 @@ const inputClass =
     if (mathB) mathB.textContent = String(b);
     if (startTime) startTime.value = String(Date.now());
 
+    function showError(msg: string) {
+      if (errorEl) { errorEl.textContent = msg; errorEl.classList.remove("hidden"); }
+      if (successEl) successEl.classList.add("hidden");
+    }
+
+    function showSuccess() {
+      if (errorEl) errorEl.classList.add("hidden");
+      if (successEl) successEl.classList.remove("hidden");
+    }
+
     form.addEventListener("submit", (e) => {
+      e.preventDefault();
       const elapsed = Date.now() - Number(startTime.value);
       const lang = localStorage.getItem("lang") || "es";
+
       if (elapsed < 3000) {
-        e.preventDefault();
-        alert(translations[lang]?.["contact.wait"] || "Por favor espera un momento antes de enviar.");
+        showError(translations[lang]?.["contact.pleaseWait"] || "Por favor espera un momento antes de enviar.");
         return;
       }
 
       const answer = document.getElementById("math-answer") as HTMLInputElement;
       if (Number(answer?.value) !== a + b) {
-        e.preventDefault();
-        alert(translations[lang]?.["contact.wrong"] || "Respuesta matemática incorrecta.");
+        showError(translations[lang]?.["contact.wrongAnswer"] || "Respuesta matemática incorrecta.");
+        return;
       }
+
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      })
+        .then((res) => {
+          if (res.ok) {
+            form.reset();
+            showSuccess();
+            const newA = Math.floor(Math.random() * 20) + 1;
+            const newB = Math.floor(Math.random() * 20) + 1;
+            if (mathA) mathA.textContent = String(newA);
+            if (mathB) mathB.textContent = String(newB);
+            if (startTime) startTime.value = String(Date.now());
+          } else {
+            showError("Error sending message. Please try again.");
+          }
+        })
+        .catch(() => {
+          showError("Error sending message. Please try again.");
+        });
     });
   }
 
@@ -793,7 +957,11 @@ const inputClass =
   }
 
   // ===== INIT ALL =====
+  let initialized = false;
+
   function initAll() {
+    if (initialized) return;
+    initialized = true;
     initTheme();
     initLang();
     initCV();
@@ -804,5 +972,5 @@ const inputClass =
   }
 
   initAll();
-  document.addEventListener("astro:after-swap", initAll);
+  document.addEventListener("astro:after-swap", () => { initialized = false; initAll(); });
 </script>

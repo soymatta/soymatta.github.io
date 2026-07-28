@@ -3,6 +3,9 @@ import Buttons from "./Buttons.astro";
 import GithubIcon from "../images/icon-github.svg?raw";
 import LinkIcon from "../images/icon-link.svg?raw";
 import PagePreviewTemplate from "../images/PagePreviewTemplate.png";
+import EBookToolboxPreview from "../images/EBookToolbox_Preview.png";
+import SphothonPreview from "../images/Sphothon_Preview.png";
+import AgentsAndSkillsPreview from "../images/AgentsAndSkills_Preview.png";
 
 import PythonIcon from "../images/icon-python.svg?raw";
 import DjangoIcon from "../images/icon-django.svg?raw";
@@ -18,10 +21,12 @@ import FirebaseIcon from "../images/icon-firebase.svg?raw";
 import SupabaseIcon from "../images/icon-supabase.svg?raw";
 import GitIcon from "../images/icon-git.svg?raw";
 import PostmanIcon from "../images/icon-postman.svg?raw";
+import TypeScriptIcon from "../images/icon-typescript.svg?raw";
 
 const toolIcons: Record<string, string> = {
   Python: PythonIcon,
   JavaScript: JSIcon,
+  TypeScript: TypeScriptIcon,
   Java: JavaIcon,
   Flask: FlaskIcon,
   Django: DjangoIcon,
@@ -36,18 +41,25 @@ const toolIcons: Record<string, string> = {
   Postman: PostmanIcon,
 };
 
-const { title, description, repo, demo, tools = [], titleKey, descKey, repoText, demoText, repoKey, demoKey } = Astro.props;
+const { title, description, repo, demo, tools = [], image, titleKey, descKey, repoText, demoText, repoKey, demoKey, imageSide = "left" } = Astro.props;
+const previewImage = image === "ebooktoolbox" ? EBookToolboxPreview : image === "sphothon" ? SphothonPreview : image === "agentsandskills" ? AgentsAndSkillsPreview : image ? PagePreviewTemplate : null;
+const flexDirection = imageSide === "right" ? "lg:flex-row-reverse" : "lg:flex-row";
 ---
 
-<article class="flex flex-col lg:flex-row gap-6 lg:gap-10 items-start py-8">
-  <div class="rounded-2xl overflow-hidden bg-card w-full max-w-[320px] sm:max-w-[400px] mx-auto lg:mx-0 lg:max-w-[400px] lg:shrink-0 border border-line">
-    <img
-      class="w-full h-auto"
-      src={PagePreviewTemplate.src}
-      alt={title}
-      loading="lazy"
-    />
-  </div>
+<article class:list={[
+  "flex flex-col gap-6 lg:gap-10 items-start py-8",
+  previewImage ? flexDirection : "lg:pl-6 lg:border-l lg:border-accent",
+]}>
+  {previewImage && (
+    <div class="rounded-2xl overflow-hidden bg-card w-full max-w-[320px] sm:max-w-[400px] mx-auto lg:mx-0 lg:max-w-[400px] lg:shrink-0 border border-line">
+      <img
+        class="w-full h-auto"
+        src={previewImage.src}
+        alt={title}
+        loading="lazy"
+      />
+    </div>
+  )}
   <div class="flex-1 min-w-0 w-full">
     <h3 class="text-xl sm:text-2xl text-accent font-bold min-h-[1.8em]" data-i18n={titleKey}>
       {title}
